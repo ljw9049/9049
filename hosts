@@ -1,0 +1,35 @@
+[ios]
+MPMP_L3"#"1 ansible_host=10.1.17.1
+MPIS_L3"#"1 ansible_host=192.168.200.2
+MPIS_L3"#"2 ansible_host=192.168.200.3
+MPMP_8F_POE_L2"#"1 ansible_host=10.1.17.11
+MPIS_8F_PoE_L2"#"1 ansible_host=192.168.200.11
+MPIS_8F_L2"#"2 ansible_host=192.168.200.12
+MPIS_8F_L2"#"3 ansible_host=192.168.200.13
+
+
+[ios:vars]
+ansible_network_os=ios
+ansible_connection=network_cli
+ansible_ssh_port=22
+ansible_ssh_user=jhchoi
+ansible_ssh_pass=wjdgh1!
+ansible_become=yes
+ansible_become_method=enable
+ansible_become_password=akis0601
+#private_key_file = ~/.ssh/id_rsa
+
+[log:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[log]
+MPMP_L3"#"1
+MPMP_8F_POE_L2"#"1
+MPIS_L3"#"1
+MPIS_L3"#"2
+MPIS_8F_PoE_L2"#"1
+MPIS_8F_L2"#"2
+MPIS_8F_L2"#"3
+
+
+
