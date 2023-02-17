@@ -7,7 +7,6 @@
   tasks:
     - name: show_output
       ios_command:
-      command_timeout: 30
         commands:
           - terminal length 0
           - show run
