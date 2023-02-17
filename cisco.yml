@@ -1,6 +1,6 @@
 ---
 - name: cisco
-  hosts: ios
+  hosts: Inventory
   gather_facts: no
   connection: localhost
 
