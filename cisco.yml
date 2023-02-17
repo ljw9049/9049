@@ -2,8 +2,7 @@
 - name: cisco
   hosts: ios
   gather_facts: no
-  connection: network_cli
-
+  connection: localhost
 
   tasks:
     - name: show_output
