@@ -3,7 +3,6 @@
   hosts: ios
   gather_facts: no
   connection: localhost
-  collections: requirements.yml
 
 
   tasks:
