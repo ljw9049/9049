@@ -3,13 +3,11 @@
   hosts: localhost
   gather_facts: no
   connection: localhost
-  
-  vars:
-    - ansible_command_timeout: 30
-  
+
   tasks:
     - name: show_output
       ios_command:
+      command_timeout: 30
         commands:
           - terminal length 0
           - show run
