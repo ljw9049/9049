@@ -21,3 +21,5 @@
           - show logging
                  
       register: show
+    vars:
+      ansible_command_timeout: 30
