@@ -26,7 +26,7 @@
     - name: Make Result Directory
       local_action:
         module: file
-        path: "Backup/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        path: "/root/Backup/{{ lookup('pipe', 'date +%Y%m%d') }}"
         state: directory
         mode: u=rwX,g=rX,o=rX
 
