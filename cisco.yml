@@ -4,6 +4,7 @@
   gather_facts: no
   connection: localhost
 
+
   tasks:
     - name: show_output
       ios_command:
@@ -21,7 +22,6 @@
           - show logging
                  
       register: show
-
 
     - name: Make Result Directory
       local_action:
@@ -56,4 +56,5 @@
         - holay@aekyung.kr
         attach:
         - /config.zip
+
 
