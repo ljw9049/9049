@@ -8,8 +8,8 @@
     - name: Make Result Directory
       become: yes
       archive:
-        path: /var/lib/awx/projects/_11__ljw90/backup/
-        dest: /var/lib/awx/projects/_11__ljw90/backup/config.zip
+        path: /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/
+        dest: /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/config.zip
         format: zip
      
 
