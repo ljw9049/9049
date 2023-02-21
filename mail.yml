@@ -3,7 +3,13 @@
   gather_facts: no
   hosts: all
   connection: localhost
+  
   tasks:
-    - name: file compress
-      shell: zip config.zip /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/*
-      ignore_errors: true
+    - name: Make Result Directory
+      become: yes
+      archive:
+        path:
+        - /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/
+        dest:
+        - /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/config.zip
+        format: zip
