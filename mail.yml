@@ -1,5 +1,5 @@
 ---
-- name: mail test
+- name: conpress test
   gather_facts: no
   hosts: all
   connection: 127.0.0.1
@@ -8,7 +8,7 @@
     - name: Make Result Directory
       become: yes
       archive:
-        path: /var/lib/awx/projects/_11__ljw90/backup/
+        path: /var/lib/awx/projects/_11__ljw90/backup/*
         dest: /var/lib/awx/projects/_11__ljw90/backup/config.zip
         format: zip
      
