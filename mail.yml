@@ -9,6 +9,7 @@
       become: yes
       archive:
         path: /var/lib/awx/projects/_11__ljw90/backup/
+        dest: /var/lib/awx/projects/_11__ljw90/backup/config.zip
         format: zip
      
 
