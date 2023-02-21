@@ -2,12 +2,12 @@
 - name: mail test
   gather_facts: no
   hosts: all
+  state: file
   connection: 127.0.0.1
   
   tasks:
     - name: Make Result Directory
-      become: yes
-      state: file
+      become: ye
       archive:
         path: /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/
         dest: /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/config.zip
