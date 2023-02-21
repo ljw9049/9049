@@ -13,4 +13,4 @@
         dest:
         - /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/config.zip
         format: zip
-        ignore_errors: true
+       
