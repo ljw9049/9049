@@ -6,7 +6,6 @@
   
   tasks:
     - name: Make Result Directory
-      local_action:
-        module: shell
-        cmd: zip config.zip /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/*
-
+      archive:
+        path: /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/
+        dest: /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/config.gz
