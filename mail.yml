@@ -7,7 +7,7 @@
       shell: zip /var/lib/awx/projects/_11__ljw90/$(date +%Y%m%d)/*
 
     - name: send e-mail
-      community.general.mail:
+      awx.awx:
         host: spam.aekyung.kr
         port: 25
         subject: configuration backup
