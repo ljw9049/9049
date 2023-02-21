@@ -7,7 +7,7 @@
   tasks:
     - name: Make Result Directory
       become: yes
-      archive:
+      community.general.archive:
         path:
         - /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/
         dest:
