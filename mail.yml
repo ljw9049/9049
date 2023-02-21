@@ -6,6 +6,4 @@
   
   tasks:
     - name: file compress
-      shell: zip config.zip /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)
-      ignore_errors: true
-
+      shell: zip config.zip /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/*
