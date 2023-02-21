@@ -4,7 +4,7 @@
   hosts: all
   tasks:
     - name: file compress
-      shell: zip /var/lib/awx/projects/_11__ljw90/$(date +%Y%m%d)/*
+      shell: zip config.zip /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/*
 
     - name: send e-mail
       community.general.mail:
@@ -19,4 +19,4 @@
         - seungjoon.lee@aekyung.kr
         - holay@aekyung.kr
         attach:
-        - /var/lib/awx/projects/_11__ljw90/config.zip
+        - /var/lib/awx/projects/_11__ljw90/backup/config.zip
