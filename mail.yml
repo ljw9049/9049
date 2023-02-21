@@ -2,7 +2,7 @@
 - name: mail test
   gather_facts: no
   hosts: all
-  connection: localhost
+  connection: 127.0.0.1
   
   tasks:
     - name: Make Result Directory
