@@ -1,0 +1,19 @@
+---
+- name: cisco
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+
+  tasks:
+    - name: send e-mail
+      community.general.mail:
+        host: spam.aekyung.kr
+        port: 25
+        subject: configuration backup
+        body: test
+        from: jungwoo.lee@aekyung.kr
+        to: seungjoon.lee@aekyun.kr
+        cc: 
+        attach:
+        - /var/lib/awx/projects/_11__ljw90/backup/20230221/192.168.200.2.txt
