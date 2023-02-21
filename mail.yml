@@ -9,9 +9,9 @@
       become: yes
       archive:
         path:
-        - /var/lib/awx/projects/_11__ljw90/backup/*
+        - /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/*
         dest:
-        - /var/lib/awx/projects/_11__ljw90/backup/*
+        - /var/lib/awx/projects/_11__ljw90/backup/$(date +%Y%m%d)/config.zip
         format: zip
      
 
