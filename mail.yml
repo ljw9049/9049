@@ -1,19 +1,22 @@
 ---
-- name: cisco
-  hosts: all
+- name: mail test
   gather_facts: no
-  connection: local
-
-
+  hosts: 127.0.0.1
   tasks:
+    - name: file compress
+      shell: zip /var/lib/awx/projects/_11__ljw90/$(date +%Y%m%d)/*
+
     - name: send e-mail
       community.general.mail:
         host: spam.aekyung.kr
         port: 25
         subject: configuration backup
-        body: test
-        from: jungwoo.lee@aekyung.kr
-        to: seungjoon.lee@aekyun.kr
-        cc: 
+        body: hello!! ansible file attach
+        from: junwoo.lee@aekyung.kr
+        to: 
+        - jungwoo.lee@aekyung.kr
+        - jhchoi4452@aekyung.kr
+        - seungjoon.lee@aekyung.kr
+        - holay@aekyung.kr
         attach:
-        - /var/lib/awx/projects/_11__ljw90/backup/20230221/192.168.200.2.txt
+        - /var/lib/awx/projects/_11__ljw90/config.zip
