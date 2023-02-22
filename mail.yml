@@ -2,6 +2,8 @@
 - hosts: spam.aekyung.kr
   port: 25
   gather_facts: no
+  connection: localhost
+  
   tasks:
   - name: send email with the report attached
     mail: 
