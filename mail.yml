@@ -1,5 +1,6 @@
 ---
-- hosts: spam.aekyung.kr
+- hosts: 127.0.0.1
+  host: spam.aekyung.kr
   port: 25
   gather_facts: no
   connection: localhost
