@@ -2,8 +2,6 @@
 - hosts: all
   connection: 127.0.0.1
   gather_facts: no
-  vars:
-      ansible_python_interpreter: /usr/bin/python3
   tasks:
   - name: send email with the report attached
     mail: 
