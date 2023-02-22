@@ -5,7 +5,7 @@
   tasks:
   - name: send email with the report attached
     mail: 
-      subject: Report of ClamAV compliance
+      subject: 스위치 백업 파일
       body: Status on
       attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
       host: spam.aekyung.kr
