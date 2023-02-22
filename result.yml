@@ -1,6 +1,6 @@
 ---
 - name: CISCO switch check
-  hosts: all
+  hosts: log
   connection: 127.0.0.1
   gather_facts: no
 # strategy: free
