@@ -2,13 +2,14 @@
 - hosts: localhost
   connection: localhost
   tasks:
+  
   - name: send email with the report attached
-    host: spam.aekyung.kr
-    port: 25
     mail: 
       subject: Report of ClamAV compliance
       body: Status on
       attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
+      host: spam.aekyung.kr
+      port: 25
       from:
       - junwoo.lee@aekyung.kr
       to:
