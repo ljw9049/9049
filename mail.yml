@@ -10,8 +10,6 @@
       attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
       host: spam.aekyung.kr
       port: 25
-      from:
-      - junwoo.lee@aekyung.kr
-      to:
-      - junwoo.lee@aekyung.kr
+      from: junwoo.lee@aekyung.kr
+      to: junwoo.lee@aekyung.kr
     run_once: true
