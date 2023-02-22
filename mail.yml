@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
-  host: spam.aekyung.kr
-  port: 25
   gather_facts: no
   connection: localhost
   
   tasks:
   - name: send email with the report attached
+    host: spam.aekyung.kr
+    port: 25
     mail: 
       subject: Report of ClamAV compliance
       body: Status on
