@@ -8,4 +8,4 @@
   tasks:
     - name: To excel
       become: yes
-      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel.py
+      shell: python /var/lib/awx/projects/_11__ljw90/To_excel.py
