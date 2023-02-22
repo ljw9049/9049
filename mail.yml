@@ -12,5 +12,22 @@
         dest: /var/lib/awx/projects/_11__ljw90/backup/config.zip
         format: zip
      
-
+- name: send e-mail
+  notification_template:
+    name: email notification
+    notification_type: email
+    notification_configuration:
+      sender: junwoo.lee@aekyung.kr
+      recipients:
+        - jungwoo.lee@aekyung.kr
+        - jhchoi4452@aekyung.kr
+        - seungjoon.lee@aekyung.kr
+        - holay@aekyung.kr
+      host: spam.aekyung.kr
+      port: 25
+      use_tls: no
+      use_ssl: no
+    state: present
+    controller_config_file: "~/tower_cli.cfg"
+    attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
        
