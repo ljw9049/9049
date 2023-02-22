@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  connection: localhost
+- hosts: all
   tasks:
   
   - name: send email with the report attached
