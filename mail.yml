@@ -4,6 +4,7 @@
   gather_facts: no
   tasks:
   - name: send email with the report attached
+    become: yes
     mail: 
       subject: Report of ClamAV compliance
       body: Status on
