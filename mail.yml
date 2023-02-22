@@ -3,7 +3,7 @@
   connection: localhost
   tasks:
   - name: send email with the report attached
-    mail: mail
+    mail: 
       subject: Report of ClamAV compliance
       body: Status on
       attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
