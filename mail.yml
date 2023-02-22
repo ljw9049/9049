@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
-  connection: local
+  connection: localhost
   tasks:
   - name: send email with the report attached
-    mail: /var/lib/awx/projects/_11__ljw90/backup/config.zip
+    mail: mail
       subject: "Report of ClamAV compliance"
       body: Status on
-      attach: test.csv
+      attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
       from: "junwoo.lee@aekyung.kr"
       to: "junwoo.lee@aekyung.kr"
     run_once: true
