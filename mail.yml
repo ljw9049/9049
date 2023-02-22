@@ -5,8 +5,8 @@
   tasks:
   - name: send email with the report attached
     mail: 
-      subject: 스위치 백업 파일
-      body: Status on
+      subject: 마포 애경타워 스위치 백업 파일
+      body: 참고
       attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
       host: spam.aekyung.kr
       port: 25
