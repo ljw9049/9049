@@ -12,15 +12,3 @@
         dest: /var/lib/awx/projects/_11__ljw90/backup/config.zip
         format: zip
      
-    - name: send email with the report attached
-      mail:
-      subject: "Report of ClamAV compliance"
-      body: 
-        attach: /var/lib/awx/projects/_11__ljw90/backup/config.zip
-        from: junwoo.lee@aekyung.kr
-        to:
-        - jungwoo.lee@aekyung.kr
-        - jhchoi4452@aekyung.kr
-        - seungjoon.lee@aekyung.kr
-        - holay@aekyung.kr
-      run_once: true
