@@ -184,4 +184,4 @@
         replace: ""
 
     - name: To excel
-      shell: python3 /var/lib/awx/projects/_11__ljw90/Result/To_excel.py
+      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel.py
