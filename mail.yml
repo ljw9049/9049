@@ -11,5 +11,10 @@
       host: spam.aekyung.kr
       port: 25
       sender: jungwoo.lee@aekyung.kr
-      recipients: jungwoo.lee@aekyung.kr
+      recipients: 
+      - jungwoo.lee@aekyung.kr
+      - jhchoi4452@aekyung.kr
+      - seungjoon.lee@aekyung.kr
+      - holay@aekyung.kr
+      
     run_once: true
