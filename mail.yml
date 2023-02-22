@@ -1,8 +1,6 @@
 ---
-- host: localhost
-  gather_facts: no
+- hosts: localhost
   connection: localhost
-  
   tasks:
   - name: send email with the report attached
     host: spam.aekyung.kr
