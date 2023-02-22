@@ -1,10 +1,10 @@
 ---
 - name: CISCO switch check
-  hosts: log
+  hosts: all
   connection: 127.0.0.1
   gather_facts: no
 # strategy: free
 
   tasks:
     - name: To excel
-      shell: python /var/lib/awx/projects/_11__ljw90/To_excel.py
+      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel.py
