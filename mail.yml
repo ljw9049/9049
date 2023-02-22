@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   connection: localhost
+  gather_facts: no
   tasks:
   - name: send email with the report attached
     mail: 
