@@ -1,5 +1,5 @@
 ---
-- hosts: 126.0.0.1
+- hosts: 127.0.0.1
   
   tasks:
   - name: send email with the report attached
