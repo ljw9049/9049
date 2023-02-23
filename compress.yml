@@ -1,7 +1,7 @@
 ---
 - name: conpress test
   gather_facts: no
-  hosts: ios
+  hosts: localhost
   connection: 127.0.0.1
   
   tasks:
