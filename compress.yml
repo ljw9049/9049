@@ -1,7 +1,7 @@
 ---
 - name: conpress test
   gather_facts: no
-  hosts: all
+  hosts: ios
   connection: 127.0.0.1
   
   tasks:
