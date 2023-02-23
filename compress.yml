@@ -5,6 +5,10 @@
   connection: 127.0.0.1
   
   tasks:
+    - name: debug
+      debug: msg="{{ lookup('pipe', 'date +%Y%m%d') }}"
+      ignore_errors: True
+  
     - name: Make Result Directory
       become: yes
       archive:
