@@ -2,11 +2,13 @@
 - name: juniper
   hosts: all
   gather_facts: no
+  roles:
+    - Juniper.junos
   connection: localhost
 
   tasks:
     - name: show_output
-      juniper_junos_command:
+      junos_command:
         commands:
           - show version
           - show chassis hardware
