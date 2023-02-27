@@ -2,13 +2,12 @@
 - name: juniper
   hosts: all
   gather_facts: no
-  connection: localhost
+  connection: netconf
 
 
   tasks:
     - name: show_output
       junos_command:
-      connection: netconf
         commands:
           - show version
           - show chassis hardware
