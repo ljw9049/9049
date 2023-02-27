@@ -6,7 +6,7 @@
 
   tasks:
     - name: show_output
-      junos_command:
+      junipernetworks.junos.junos_command:
         commands:
           - "show version"
           - "show chassis hardware"
