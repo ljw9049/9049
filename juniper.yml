@@ -2,8 +2,7 @@
 - name: juniper
   hosts: all
   gather_facts: no
-  connection: netconf
-
+  connection: localhost
 
   tasks:
     - name: show_output
