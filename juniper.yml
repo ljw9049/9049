@@ -16,7 +16,6 @@
           - "show system alarm"
           - "show interfaces extensive"
           - "show log messages"
-        dest: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname}}.txt"
                  
       register: show
 
