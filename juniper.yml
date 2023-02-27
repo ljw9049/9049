@@ -6,6 +6,9 @@
 
 
   tasks:
+    
+    
+    
     - name: show_output
       junos_command:
         commands:
@@ -16,6 +19,7 @@
           - "show system alarm"
           - "show interfaces extensive"
           - "show log messages"
+          dest: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname}}.txt"
                  
       register: show
 
@@ -26,9 +30,6 @@
         state: directory
         mode: u=rwX,g=rX,o=rX
 
-    - name: show_backup
-      local_action:
-        copy content="{{name.stdout}}|{{ansible_host}}|{{model.stdout}}|{{serial.stdout}}|{{memory.stdout}}|{{cpu.stdout}}|{{module}}|{{power}}|{{fan}}|{{port}}|{{version.stdout}}|{{log}}|{{alarm}}\n"
-        dest="/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+ 
 
 
