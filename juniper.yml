@@ -29,6 +29,6 @@
     - name: show_backup
       local_action:
         copy content="{{name.stdout}}|{{ansible_host}}|{{model.stdout}}|{{serial.stdout}}|{{memory.stdout}}|{{cpu.stdout}}|{{module}}|{{power}}|{{fan}}|{{port}}|{{version.stdout}}|{{log}}|{{alarm}}\n"
-        dest="Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.log"
+        dest="/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.log"
 
 
