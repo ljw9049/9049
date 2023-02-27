@@ -2,8 +2,6 @@
 - name: juniper
   hosts: all
   gather_facts: no
-  roles:
-    - Juniper.junos
   connection: localhost
 
   tasks:
