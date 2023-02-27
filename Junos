@@ -3,7 +3,7 @@
 10.100.18.252
 
 
-[ios:vars]
+[Junos:vars]
 ansible_network_os: junos
 ansible_connection: network_cli
 ansible_ssh_port: 22
