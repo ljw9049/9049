@@ -4,7 +4,17 @@
   gather_facts: no
   connection: localhost
 
-  tasks:                
+  tasks:
+    - name: show_output
+      junos_command:
+        commands:
+          - show version
+          - show chassis hardware
+          - show chassis routing-engine
+          - show chassis environment
+          - show system alarm
+          - show interfaces extensive
+          
     - name: Make Result Directory
       local_action:
         module: file
@@ -17,13 +27,6 @@
       junos_config:
         backup: yes
         backup_options:
-         lines:
-          - show version
-          - show chassis hardware
-          - show chassis routing-engine
-          - show chassis environment
-          - show system alarm
-          - show interfaces extensive
          filename: /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.log
          dir_path: /var/lib/awx/projects/_11__ljw90/backup/
        
