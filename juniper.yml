@@ -14,7 +14,7 @@
           - show chassis environment
           - show system alarm
           - show interfaces extensive
-        wait_for: result[1] contains Juniper
+        display: text
         
     - name: Make Result Directory
       local_action:
