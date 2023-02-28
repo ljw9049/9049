@@ -14,8 +14,7 @@
           - show chassis environment
           - show system alarm
           - show interfaces extensive
-        register: show
-        
+
     - name: Make Result Directory
       local_action:
         module: file
