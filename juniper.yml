@@ -26,7 +26,7 @@
 
     - name: show_backup
       local_action:
-        copy content="{{show version.stdout}}"
+        copy content="{{show version}}"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.log
 
        
