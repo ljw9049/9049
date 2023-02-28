@@ -5,6 +5,13 @@
   connection: localhost
 
   tasks:
+    - name: Make Result Directory
+      local_action:
+        module: file
+        path: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        state: directory
+        mode: u=rwX,g=rX,o=rX
+        
     - name: show_output
       junos_command:
         commands:
@@ -14,14 +21,6 @@
           - show chassis environment
           - show system alarm
           - show interfaces extensive
+       dest: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname}}.txt"   
        
-
- 
-    - name: Make Result Directory
-      local_action:
-        module: file
-        path: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}"
-        dest: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname}}.txt"
-        state: directory
-        mode: u=rwX,g=rX,o=rX
 
