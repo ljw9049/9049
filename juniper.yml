@@ -14,6 +14,7 @@
           - show chassis environment
           - show system alarm
           - show interfaces extensive
+         dest: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname}}.log" 
           
     - name: Make Result Directory
       local_action:
@@ -21,11 +22,6 @@
         path: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}"
         state: directory
         mode: u=rwX,g=rX,o=rX   
-        
-    - name: show_backup
-      local_action:
-        copy content="\n\nshow version\n\n{{ show.stdout[1] }}\n\nshow chassis hardware\n\n{{ show.stdout[2] }}\n\nshow chassis routing-engine\n\n{{ show.stdout[3] }}\n\nshow chassis environment\n\n{{ show.stdout[4] }}\n\nshow system alarm\n\n{{ show.stdout[5] }}\n\nshow interfaces extensive\n\n{{ show.stdout[6] }}"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.log
 
 
 
