@@ -30,15 +30,3 @@ MPIS_L3"#"2
 MPIS_8F_PoE_L2"#"1
 MPIS_8F_L2"#"2
 MPIS_8F_L2"#"3
-
-[juniper]
-juniper_sw ansible_host=10.100.18.252
-
-[juniper:vars]
-ansible_network_os=junos
-ansible_connection=netconf
-ansible_ssh_port=22
-ansible_ssh_user=ljw9049
-ansible_ssh_pass=Dlwjddn56$
-ansible_become='yes'
-ansible_python_interpreter=/usr/bin/python3
