@@ -1,6 +1,6 @@
 ---
 - name: juniper
-  hosts: all
+  hosts: juniper
   gather_facts: no
   connection: localhost
 
