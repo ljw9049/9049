@@ -10,9 +10,4 @@
         commands:
           - show version
           - show chassis hardware
-          - show chassis routing-engine
-          - show chassis environment
-          - show system alarm
-          - show interfaces extensive
-          - show log messages
           
