@@ -11,10 +11,10 @@
           - show version
           - show chassis hardware
           - show chassis routing-engine
-          - show chassis environment
+         - show chassis environment
           - show system alarm
           - show interfaces extensive
-        display: text
+      register: show
         
     - name: Make Result Directory
       local_action:
