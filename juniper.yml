@@ -14,8 +14,7 @@
           - show chassis environment
           - show system alarm
           - show interfaces extensive
-        register: show    
-
+          
     - name: Make Result Directory
       local_action:
         module: file
@@ -26,7 +25,7 @@
     - name: show_backup
       local_action:
         copy content="\n\nshow version\n\n"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.log
 
 
        
