@@ -13,5 +13,6 @@
           - show chassis routing-engine
           - show chassis environment
           - show system alarm
+          - show interfaces extensive
           
           
