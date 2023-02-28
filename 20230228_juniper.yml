@@ -14,6 +14,8 @@
           - show chassis environment
           - show system alarm
           - show interfaces extensive
+          - show log messages
+          - show configuration | display set
       register: show
         
     - name: Make Result Directory
@@ -25,5 +27,5 @@
 
     - name: show_backup
       local_action:
-        copy content="\n\nshow version\n\n{{ show.stdout[0] }}\n\nshow chassis hardware\n\n{{ show.stdout[1] }}\n\nshow chassis routing-engine\n\n{{ show.stdout[2] }}\n\nshow chassis environment\n\n{{ show.stdout[3] }}\n\nshow system alarm\n\n{{ show.stdout[4] }}\n\nshow interfaces extensive\n\n{{ show.stdout[5] }}"
+        copy content="\n\nshow version\n\n{{ show.stdout[0] }}\n\nshow chassis hardware\n\n{{ show.stdout[1] }}\n\nshow chassis routing-engine\n\n{{ show.stdout[2] }}\n\nshow chassis environment\n\n{{ show.stdout[3] }}\n\nshow system alarm\n\n{{ show.stdout[4] }}\n\nshow interfaces extensive\n\n{{ show.stdout[5] }}\n\nshow log messages\n\n{{ show.stdout[6] }}\n\nshow configuration | display set \n\n{{ show.stdout[7] }}"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt
