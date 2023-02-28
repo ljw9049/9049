@@ -13,7 +13,7 @@
           - show chassis routing-engine
           - show chassis environment
           - show system alarm
-          - show interfaces extensive | no-more
+          - show interfaces extensive
       register: show
         
     - name: Make Result Directory
