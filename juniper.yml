@@ -10,4 +10,6 @@
         commands:
           - show version
           - show chassis hardware
+          - show chassis routing-engine
+          
           
