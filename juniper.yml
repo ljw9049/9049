@@ -8,8 +8,8 @@
     - name: show_output
       junos_command:
         commands:
-          - "show version"
-          - "show chassis hardware"
+          - {show version}
+          - {show chassis hardware}
           - "show chassis routing-engine"
           - "show chassis environment"
           - "show system alarm"
