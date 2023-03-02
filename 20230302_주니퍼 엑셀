@@ -1,34 +1,34 @@
 호스트네임
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt | grep 'hostname' | awk '{print $2; exit}'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'hostname' | awk '{print $2; exit}'
 
 
 시리얼
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt | sed -n '/show chassis hardware/,/show chassis routing-engine/p' | grep -E "Chassis " | awk '{print $2; exit}' | sort -u
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis hardware/,/show chassis routing-engine/p' | grep -E "Chassis " | awk '{print $2; exit}' | sort -u
 
 업타임
 
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Uptime" | awk '{print $2$3; exit}' | sort -u
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Uptime" | awk '{print $2$3; exit}' | sort -u
 
 버젼
 
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt | sed -n '/show version/,/show chassis hardware/p' | grep 'Junos' | awk '{print $2; exit}'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show version/,/show chassis hardware/p' | grep 'Junos' | awk '{print $2; exit}'
 
 CPU
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt  | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2-100,$3; exit}' | sed 's/-//g'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2-100,$3; exit}' | sed 's/-//g'
 
 메모리
 
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt  | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization" | awk '{print $3,$4; exit}'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization" | awk '{print $3,$4; exit}'
 
 Fan
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt  | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'
 
 온도
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt  |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'
 
 파워(Cisco 유지)
 
-cat /var/lib/awx/projects/_11__ljw90/backup/20230228/10.100.18.252.txt  |  sed -n '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $7; exit}'
+cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $7; exit}'
 
 인터페이스
 
