@@ -1,8 +1,0 @@
----
-- hosts: localhost
-  gather_facts: no
-
-  tasks:
-
-- import_playbook: cisco.yml
-- import_playbook: result.yml
