@@ -1,6 +1,6 @@
 
 ---
-- name: CISCO switch check
+- name: Junifer switch check
   hosts: all
   connection: 127.0.0.1
   gather_facts: no
