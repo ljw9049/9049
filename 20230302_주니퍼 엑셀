@@ -1,3 +1,15 @@
+
+---
+- name: CISCO switch check
+  hosts: all
+  connection: 127.0.0.1
+  gather_facts: no
+# strategy: free
+
+  tasks:
+
+
+
 호스트네임
 cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'hostname' | awk '{print $2; exit}'
 
