@@ -133,7 +133,7 @@
      assemble:
        src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
        dest: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-      ignore_errors: True
+       ignore_errors: True
       
    - name: Result modify1
      replace:
