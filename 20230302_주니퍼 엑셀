@@ -11,41 +11,117 @@
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'hostname' | awk '{print $2; exit}'
       ignore_errors: True
       register: Hostname
+      
+    - name: serial
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis hardware/,/show chassis routing-engine/p' | grep -E "Chassis " | awk '{print $2; exit}' | sort -u
+      ignore_errors: True
+      register: Serial     
+       
+    - name: uptime
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Uptime" | awk '{print $2$3; exit}' | sort -u
+      ignore_errors: True
+      register: Uptime
+      
 
+    - name: version
+      shell:cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show version/,/show chassis hardware/p' | grep 'Junos' | awk '{print $2; exit}'
+      ignore_errors: True
+      register: Version
 
+    - name: cpu
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2-100,$3; exit}' | sed 's/-//g'
+      ignore_errors: True
+      register: CPU
 
-호스트네임
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'hostname' | awk '{print $2; exit}'
+    - name: arithmetic facs
+      set_fact: set="{{ CPU.stdout }}"     
 
+    - name: memory Total
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization" | awk '{print $3,$4; exit}'
+      ignore_errors: True
+      register: memUse
 
-시리얼
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis hardware/,/show chassis routing-engine/p' | grep -E "Chassis " | awk '{print $2; exit}' | sort -u
+    - name: fan
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'
+      ignore_errors: True
+      register: Fan
+      
+    - name: temp
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'
+      ignore_errors: True
+      register: Temp
 
-업타임
+    - name: power
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $7; exit}'
+      ignore_errors: True
+      register: Power
 
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Uptime" | awk '{print $2$3; exit}' | sort -u
+    - name: Make Result Directory
+      local_action:
+        module: file
+        path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        state: directory
+        mode: u=rwX,g=rX,o=rX
 
-버젼
+    - name: Result summary
+      local_action:
+        copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU.stdout}}|{{ MEM.stdout}}|{{ Fan.stdout }}|{{ Temp.stdout }}|{{ Power.stdout }}"
+        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
 
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show version/,/show chassis hardware/p' | grep 'Junos' | awk '{print $2; exit}'
+    - name: Assemble from fragments from a directory
+      assemble:
+        src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+      ignore_errors: True
 
-CPU
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2-100,$3; exit}' | sed 's/-//g'
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "', 'failed': False, 'changed': False}"
+        replace: ""
 
-메모리
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "'msg': u'"
+        replace: ""
 
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization" | awk '{print $3,$4; exit}'
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "{'msg': '"
+        replace: ""
 
-Fan
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "{'msg': '"
+        replace: ""
 
-온도
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'
+    - name: Result modify2
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "'failed': False, 'changed': False"
+        replace: ""
 
-파워(Cisco 유지)
+    - name: Result modify3
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "',"
+        replace: ""
 
-cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $7; exit}'
+    - name: Result modify4
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "{"
+        replace: ""
 
-인터페이스
+    - name: Result modify5
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+        regexp: "}"
+        replace: ""
 
-수정필요
+    - name: To excel
+      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel.py
+
