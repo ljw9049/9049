@@ -21,7 +21,7 @@ worksheet.set_column('K:K', 15)
 worksheet.set_column('L:L', 15)
 worksheet.set_column('M:M', 15)
 
-worksheet.write(0, 0, 'hostname', format)
+worksheet.write(0, 0, 'Hostname', format)
 worksheet.write(0, 1, 'Serial', format)
 worksheet.write(0, 2, 'Uptime', format)
 worksheet.write(0, 3, 'OS Ver', format)
