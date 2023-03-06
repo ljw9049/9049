@@ -32,9 +32,6 @@
      ignore_errors: True
      register: CPU
 
-   - name: arithmetic facs
-     set_fact: set="{{ CPU.stdout }}"     
-
    - name: memory Total
      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization" | awk '{print $3,$4; exit}'
      ignore_errors: True
