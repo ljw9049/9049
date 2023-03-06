@@ -7,14 +7,14 @@
     mail: 
       subject:  스위치 헬스체크 
       body: 참고
-      attach: /var/lib/awx/projects/_11__ljw90/Result/cisco.xlsx
+      attach: /var/lib/awx/projects/_11__ljw90/cisco.xlsx
       host: spam.aekyung.kr
       port: 25
       sender: jungwoo.lee@aekyung.kr
       recipients: 
       - jungwoo.lee@aekyung.kr
       - jhchoi4452@aekyung.kr
-      - seungjoon.lee@aekyung.kr
-      - holay@aekyung.kr
+      
+      
       
     run_once: true
