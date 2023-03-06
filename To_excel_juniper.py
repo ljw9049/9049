@@ -1,8 +1,8 @@
 import xlsxwriter
 
-file = open("/var/lib/awx/projects/_11__ljw90/Result/cisco.log", 'r')
+file = open("/var/lib/awx/projects/_11__ljw90/Result/junifer.log", 'r')
 data = file.readlines()
-workbook = xlsxwriter.Workbook('/var/lib/awx/projects/_11__ljw90/cisco.xlsx')
+workbook = xlsxwriter.Workbook('/var/lib/awx/projects/_11__ljw90/junifer.xlsx')
 worksheet = workbook.add_worksheet('Result')
 format = workbook.add_format({'bold': True, 'align': 'center'})
 format.set_border()
