@@ -7,7 +7,7 @@
 
   tasks:
    - name: hostname
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'hostname' | awk '{print $2; exit}'
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'Hostname' | awk '{print $2; exit}'
      ignore_errors: True
      register: Hostname
       
