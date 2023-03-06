@@ -42,7 +42,7 @@ MPHD_L3"#"2
 
 
 [juniper]
-juniper_sw ansible_host=10.100.18.252
+AKU_new_building_sw ansible_host=10.100.18.252
 
 [juniper:vars]
 ansible_network_os=junos
