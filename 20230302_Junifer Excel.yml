@@ -1,7 +1,7 @@
 ---
 - name: Junifer switch check
   hosts: log
-  connection: 127.0.0.1
+  connection: localhost
   gather_facts: no
 # strategy: free
 
