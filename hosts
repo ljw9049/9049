@@ -39,7 +39,7 @@ MPID_L3"#"1
 MPID_L3"#"2 
 MPHD_L3"#"1 
 MPHD_L3"#"2 
-
+AKU_new_building_sw
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
