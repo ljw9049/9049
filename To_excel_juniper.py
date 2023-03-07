@@ -9,6 +9,7 @@ format.set_border()
 format.set_pattern(1)
 format.set_bg_color('#A9BCF5')
 
+
 format2 = workbook.add_format()
 format2.set_border()
 worksheet.set_column('A:A', 20)
