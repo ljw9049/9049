@@ -50,5 +50,5 @@ ansible_connection=netconf
 ansible_ssh_port=22
 ansible_ssh_user=ljw9049
 ansible_ssh_pass=Dlwjddn56$
-ansible_become='yes'
-ansible_python_interpreter=/usr/bin/python3
+ansible_become=yes
+ansible_become_method=enable
