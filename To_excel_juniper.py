@@ -35,6 +35,7 @@ worksheet.write(0, 5, 'memUse', format)
 worksheet.write(0, 6, 'Fan', format)
 worksheet.write(0, 7, 'Temp', format)
 worksheet.write(0, 8, 'Power', format)
+worksheet.write(0, 9, 'Port error', format)
 
 
 row = 1
