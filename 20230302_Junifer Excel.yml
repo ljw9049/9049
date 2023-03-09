@@ -51,6 +51,35 @@
      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $7; exit}'
      ignore_errors: True
      register: Power
+     
+     
+   - name: Port check1
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep Framing | sed 's/,//g' | awk '$2 > 10 {print "Input error"}'
+     ignore_errors: True
+     register: TMP4
+
+   - name: Port check2
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep Framing | sed 's/,//g' | awk '$4 > 10 {print "Input drop"}'
+     ignore_errors: True
+     register: TMP5
+
+   - name: Port check3
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep "Carrier transitions" | sed 's/,//g' | awk '$5 > 10 {print "Output error"}'
+     ignore_errors: True
+     register: TMP6
+
+   - name: Port check4
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep "Carrier transitions" | sed 's/,//g' | awk '$7 > 10 {print "Output drop"}'
+     ignore_errors: True
+     register: TMP7
+
+
+   - name: Port result
+     debug: msg="{% if 'Input error' in TMP4.stdout %}Input error{% elif 'Input drop' in TMP5.stdout %}Input drop{% elif 'Output error' in TMP6.stdout %}Output error{% elif 'Output drop' in TMP7.stdout %}Output drop{% else %}OK{% endif %}"
+     register: port
+     ignore_errors: True
+      
+      
 
    - name: Make Result Directory
      local_action:
