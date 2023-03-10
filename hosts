@@ -40,12 +40,12 @@ MPID_L3"#"2
 MPHD_L3"#"1 
 MPHD_L3"#"2 
 AKU_new_building_sw
-SRX"-"AK"-"MAPO"-"FW
+SRX_AK_MAPO_FW
 
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
-SRX"-"AK"-"MAPO"-"FW ansible_host=10.1.10.1
+SRX_AK_MAPO_FW ansible_host=10.1.10.1
 
 [juniper:vars]
 ansible_network_os=junos
