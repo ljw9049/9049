@@ -43,7 +43,7 @@
      register: Fan
       
    - name: temp
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'|sed 's/C//g'
      ignore_errors: True
      register: Temp
 
