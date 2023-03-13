@@ -40,10 +40,12 @@ MPID_L3"#"2
 MPHD_L3"#"1 
 MPHD_L3"#"2 
 AKU_new_building_sw
+AKC_ULSAN_VPN
 
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
+AKC_ULSAN_VPN ansible_host=10.100.12.254
 
 
 [juniper:vars]
