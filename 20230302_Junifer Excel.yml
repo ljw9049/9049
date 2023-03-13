@@ -48,7 +48,7 @@
      register: Temp
 
    - name: power
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $5; exit}'
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n  '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $5,$6,$7,$8; exit}'|sed 's/Supply 0 //g'
      ignore_errors: True
      register: Power
      
