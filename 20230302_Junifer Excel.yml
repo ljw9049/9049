@@ -38,7 +38,7 @@
      register: memUse
 
    - name: fan
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'|sed 's/OK//g'
      ignore_errors: True
      register: Fan
       
