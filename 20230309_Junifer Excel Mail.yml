@@ -5,7 +5,7 @@
   tasks:
   - name: send email with the report attached
     mail: 
-      subject:  스위치 헬스체크 
+      subject: 주니퍼 장비 헬스체크 
       body: 참고
       attach: /var/lib/awx/projects/_11__ljw90/junifer.xlsx
       host: spam.aekyung.kr
