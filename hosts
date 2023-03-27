@@ -49,7 +49,8 @@ AKCT_DAEGU_VPN
 AKCT_DAEJEON 
 AKCT_SIHWA_VPN 
 AKCT_CHEONGYANG_VPN 
-AKCT_POHANG_VPN 
+AKCT_POHANG_VPN
+AKS_KIDC_A
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
@@ -63,6 +64,7 @@ AKCT_DAEJEON ansible_host=192.168.123.1
 AKCT_SIHWA_VPN ansible_host=10.150.13.1
 AKCT_CHEONGYANG_VPN ansible_host=10.150.16.1
 AKCT_POHANG_VPN ansible_host=10.150.12.1
+AKS_KIDC_A ansible_host=172.26.2.1
 
 
 [juniper:vars]
