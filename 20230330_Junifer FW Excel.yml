@@ -33,7 +33,7 @@
      register: CPU
 
    - name: memory Total
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization\|Total memory" | awk '/Memory utilization/ {print $3,$4} /Total memory/ {print $10,$11}'|sed 's/)//g'
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/node1/p' | grep "Total memory" | awk '{print $10,$11}'|sed 's/)//g' 
      ignore_errors: True
      register: memUse
 
