@@ -51,7 +51,7 @@ AKCT_SIHWA_VPN
 AKCT_CHEONGYANG_VPN 
 AKCT_POHANG_VPN
 AKS_KIDC_A
-SRX_AK_MAPO_FW
+AKC_FW_1
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
@@ -66,7 +66,7 @@ AKCT_SIHWA_VPN ansible_host=10.150.13.1
 AKCT_CHEONGYANG_VPN ansible_host=10.150.16.1
 AKCT_POHANG_VPN ansible_host=10.150.12.1
 AKS_KIDC_A ansible_host=172.26.2.1
-SRX_AK_MAPO_FW ansible_host=10.1.10.1
+AKC_FW_1 ansible_host=172.16.50.111
 
 [juniper:vars]
 ansible_network_os=junos
