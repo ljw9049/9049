@@ -1,0 +1,152 @@
+---
+- name: Junifer fw check
+  hosts: log
+  connection: 127.0.0.1
+  gather_facts: no
+# strategy: free
+
+  tasks:
+   - name: hostname
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'Hostname' | awk '{print $2; exit}'
+     ignore_errors: True
+     register: Hostname
+      
+   - name: serial
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis hardware/,/show chassis routing-engine/p' | grep -E "Chassis " | awk '{print $2; exit}' | sort -u
+     ignore_errors: True
+     register: Serial     
+       
+   - name: uptime
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Uptime" | awk '{print $2$3; exit}' | sort -u
+     ignore_errors: True
+     register: Uptime
+      
+
+   - name: version
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show version/,/show chassis hardware/p' | grep 'Junos' | awk '{print $2; exit}'
+     ignore_errors: True
+     register: Version
+
+   - name: cpu
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2-100,$3; exit}' | sed 's/-//g'
+     ignore_errors: True
+     register: CPU
+
+   - name: memory Total
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Memory utilization\|Total memory" | awk '/Memory utilization/ {print $3,$4} /Total memory/ {print $10,$11}'|sed 's/)//g'
+     ignore_errors: True
+     register: memUse
+
+   - name: fan
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis environment/,/show system alarm/p' | grep "Fans" | awk '{print $7,$8,$9,$10,$11; exit}'|sed 's/OK//g'
+     ignore_errors: True
+     register: Fan
+      
+   - name: temp
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Temperature " | awk '{print $2,$3,$4; exit}'|sed 's/C//g'
+     ignore_errors: True
+     register: Temp
+
+   - name: power
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n  '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $5,$6,$7,$8; exit}'|sed 's/Supply 0 //g'
+     ignore_errors: True
+     register: Power
+     
+     
+   - name: Port check1
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep Framing | sed 's/,//g' | awk '$2 > 10 {print "Input error"}'
+     ignore_errors: True
+     register: TMP4
+
+   - name: Port check2
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep Framing | sed 's/,//g' | awk '$4 > 10 {print "Input drop"}'
+     ignore_errors: True
+     register: TMP5
+
+   - name: Port check3
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep "Carrier transitions" | sed 's/,//g' | awk '$5 > 10 {print "Output error"}'
+     ignore_errors: True
+     register: TMP6
+
+   - name: Port check4
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep "Carrier transitions" | sed 's/,//g' | awk '$7 > 10 {print "Output drop"}'
+     ignore_errors: True
+     register: TMP7
+
+
+   - name: Port result
+     debug: msg="{% if 'Input error' in TMP4.stdout %}Input error{% elif 'Input drop' in TMP5.stdout %}Input drop{% elif 'Output error' in TMP6.stdout %}Output error{% elif 'Output drop' in TMP7.stdout %}Output drop{% else %}OK{% endif %}"
+     register: port
+     ignore_errors: True
+      
+      
+
+   - name: Make Result Directory
+     local_action:
+       module: file
+       path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+       state: directory
+       mode: u=rwX,g=rX,o=rX
+
+   - name: Result summary
+     local_action:
+       copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU.stdout}}|{{ memUse.stdout}}|{{ Fan.stdout }}|{{ Temp.stdout }}|{{ Power.stdout }}|{{ port }}"
+       dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+
+   - name: Assemble from fragments from a directory
+     assemble:
+       src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+       dest: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+     ignore_errors: True
+
+   - name: Result modify1
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "', 'failed': False, 'changed': False}"
+       replace: ""
+
+   - name: Result modify1
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "'msg': u'"
+       replace: ""
+
+   - name: Result modify1
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "{'msg': '"
+       replace: ""
+
+   - name: Result modify1
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "{'msg': '"
+       replace: ""
+
+   - name: Result modify2
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "'failed': False, 'changed': False"
+       replace: ""
+
+   - name: Result modify3
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "',"
+       replace: ""
+
+   - name: Result modify4
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "{"
+       replace: ""
+
+   - name: Result modify5
+     replace:
+       path: "/var/lib/awx/projects/_11__ljw90/Result/junifer.log"
+       regexp: "}"
+       replace: ""
+
+   - name: To excel
+     shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel_juniper.py
+    
