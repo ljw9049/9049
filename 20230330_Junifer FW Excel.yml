@@ -28,7 +28,7 @@
      register: Version
 
    - name: cpu
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2-100,$3; exit}' | sed 's/-//g'
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show chassis routing-engine/,/show chassis environment/p' | grep "Idle" | awk '{print $2,$3; exit}' | sed 's/-//g'
      ignore_errors: True
      register: CPU
 
