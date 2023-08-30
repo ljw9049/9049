@@ -52,10 +52,6 @@
      ignore_errors: True
      register: Power
    
-   - name: Module check1
-     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n  '/show system alarm/,/show interfaces extensive/p' | awk '/Check/ {print "Module error"; exit}'
-     ignore_errors: True
-     register: TMP8
      
    - name: Port check1
      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep Framing | sed 's/,//g' | awk '$2 > 10 {print "Input error"}'
@@ -83,10 +79,7 @@
      register: port
      ignore_errors: True
   
-   - name: Module result
-     debug: msg="{% if 'Module error' in TMP8.stdout %}Module error{% else %}OK{% endif %}"
-     register: Module
-     ignore_errors: True
+
 
    - name: Make Result Directory
      local_action:
@@ -97,7 +90,7 @@
 
    - name: Result summary
      local_action:
-       copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU.stdout}}|{{ memUse.stdout}}|{{ Fan.stdout }}|{{ Temp.stdout }}|{{ Power.stdout }}|{{ port }}|{{ Module }}"
+       copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU.stdout}}|{{ memUse.stdout}}|{{ Fan.stdout }}|{{ Temp.stdout }}|{{ Power.stdout }}|{{ port }}"
        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
 
    - name: Assemble from fragments from a directory
