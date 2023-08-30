@@ -10,7 +10,7 @@
       attach: /var/lib/awx/projects/_11__ljw90/cisco.xlsx
       host: spam.aekyung.kr
       port: 25
-      sender: jungwoo.lee@aekyung.kr
+      sender: ansible@aekyung.kr
       recipients: 
       - jungwoo.lee@aekyung.kr
       - jhchoi4452@aekyung.kr
