@@ -51,7 +51,11 @@
      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt |  sed -n  '/show chassis environment/,/show system alarm/p' | grep "Power" | awk '{print $5,$6,$7,$8; exit}'|sed 's/Supply 0 //g'
      ignore_errors: True
      register: Power
-     
+   
+   - name: Module check1
+     shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n  '/show system alarm/,/show interfaces extensive/p' | awk '/Check/ {print "Module error"; exit}'
+     ignore_errors: True
+     register: TMP8
      
    - name: Port check1
      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep Framing | sed 's/,//g' | awk '$2 > 10 {print "Input error"}'
@@ -78,8 +82,11 @@
      debug: msg="{% if 'Input error' in TMP4.stdout %}Input error{% elif 'Input drop' in TMP5.stdout %}Input drop{% elif 'Output error' in TMP6.stdout %}Output error{% elif 'Output drop' in TMP7.stdout %}Output drop{% else %}OK{% endif %}"
      register: port
      ignore_errors: True
-      
-      
+  
+   - name: Module result
+     debug: msg="{% if 'Module error' in TMP8.stdout %}Module error{% else %}OK{% endif %}"
+     register: Module
+     ignore_errors: True
 
    - name: Make Result Directory
      local_action:
@@ -90,7 +97,7 @@
 
    - name: Result summary
      local_action:
-       copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU.stdout}}|{{ memUse.stdout}}|{{ Fan.stdout }}|{{ Temp.stdout }}|{{ Power.stdout }}|{{ port }}"
+       copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU.stdout}}|{{ memUse.stdout}}|{{ Fan.stdout }}|{{ Temp.stdout }}|{{ Power.stdout }}|{{ port }}|{{ Module }}"
        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
 
    - name: Assemble from fragments from a directory
