@@ -54,6 +54,7 @@ AKS_KIDC_A
 AKC_FW_1
 AKHD_SRX1
 Groupware_FW_1
+SRX_AK_MAPO_FW
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
@@ -71,6 +72,7 @@ AKS_KIDC_A ansible_host=172.26.2.1
 AKC_FW_1 ansible_host=172.16.50.111
 AKHD_SRX1 ansible_host=10.90.1.1
 Groupware_FW_1 ansible_host=10.250.20.193
+SRX_AK_MAPO_FW ansible_host=10.1.10.1
 
 [juniper:vars]
 ansible_network_os=junos
