@@ -53,6 +53,7 @@ AKCT_POHANG_VPN
 AKS_KIDC_A
 AKC_FW_1
 AKHD_SRX1
+Groupware_FW_1
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
@@ -69,6 +70,7 @@ AKCT_POHANG_VPN ansible_host=10.150.12.1
 AKS_KIDC_A ansible_host=172.26.2.1
 AKC_FW_1 ansible_host=172.16.50.111
 AKHD_SRX1 ansible_host=10.90.1.1
+Groupware_FW_1 ansible_host=10.250.20.193
 
 [juniper:vars]
 ansible_network_os=junos
