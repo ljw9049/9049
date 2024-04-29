@@ -7,7 +7,7 @@
 
   tasks:
     - name: name
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/20240429/MPIS_L3#2.txt | awk '{sub(/,.*/, ""); print}' | grep "NAME" | sed 's/NAME://g' 
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/20240429/MPIS_L3#2.txt | awk 'BEGIN{FS="NAME:"} {print $2}' | awk '{sub(/,.*/, ""); print}'
       ignore_errors: True
       register: Name
 
@@ -17,7 +17,7 @@
       register: Serial
 
     - name: pid
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/20240429/MPIS_L3#2.txt | awk '{sub(/,.*/, ""); print}' | grep "PID" | sed 's/PID://g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/20240429/MPIS_L3#2.txt | awk 'BEGIN{FS="PID:"} {print $2}' | awk '{sub(/,.*/, ""); print}'
       ignore_errors: True
       register: PID
 
