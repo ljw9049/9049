@@ -20,7 +20,7 @@
           - show interfaces status
           - show interfaces counters errors          
           - show logging
-          - show inventory 
+          - show inventory
                  
       register: show
 
