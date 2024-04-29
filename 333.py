@@ -26,16 +26,9 @@ worksheet.set_column('L:L', 15)
 worksheet.set_column('M:M', 15)
 
 worksheet.write(0, 0, 'NAME', format)
-worksheet.write(0, 1, 'PID', format)
-worksheet.write(0, 2, 'Uptime', format)
-worksheet.write(0, 3, 'SN', format)
-worksheet.write(0, 4, 'CPU', format)
-worksheet.write(0, 5, 'Memory', format)
-worksheet.write(0, 6, 'Fan', format)
-worksheet.write(0, 7, 'Temp', format)
-worksheet.write(0, 8, 'Power', format)
-worksheet.write(0, 9, 'INT Error-disable', format)
-worksheet.write(0, 10, 'INT CRC Error', format)
+worksheet.write(0, 1, 'Serial', format)
+worksheet.write(0, 2, 'PID', format)
+
 
 row = 1
 col = 0
