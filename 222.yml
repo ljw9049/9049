@@ -14,12 +14,12 @@
     - name: serial
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/20240429/MPIS_L3#2.txt | awk 'BEGIN{FS="SN:"} {print $2}'
       ignore_errors: True
-      register: Serial
+      register: SN
 
     - name: pid
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/20240429/MPIS_L3#2.txt | awk 'BEGIN{FS="PID:"} {print $2}' | awk '{sub(/,.*/, ""); print}'
       ignore_errors: True
-      register: PID
+      register: Pid
 
    
     - name: Make Result Directory
@@ -31,7 +31,7 @@
 
     - name: Result summary
       local_action:
-        copy content="{{ Name.stdout }}|{{ Serial.stdout }}|{{ PID..stdout }}"
+        copy content="{{ Name.stdout }}|{{ SN.stdout }}|{{ Pid.stdout }}"
         dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
 
     - name: Assemble from fragments from a directory
