@@ -34,7 +34,7 @@ row = 1
 col = 0
 
 for i in data:
-    for j in i.split('|'):
+    for j in i.split('___'):
         worksheet.write(row, col, j, format2)
         col += 1
     col = 0
