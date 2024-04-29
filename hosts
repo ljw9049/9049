@@ -2,8 +2,6 @@
 Common_L3"#"1 ansible_host=10.1.15.1
 MPIS_L3"#"1 ansible_host=192.168.200.2
 MPIS_L3"#"2 ansible_host=192.168.200.3
-MPMP_L3"#"1 ansible_host=10.1.17.1
-MPJJ_L3"#"1 ansible_host=10.1.16.1
 AKCH_L3"#"1 ansible_host=10.1.18.2
 AKCH_L3"#"2 ansible_host=10.1.18.3
 MPID_L3"#"1 ansible_host=172.100.10.2
