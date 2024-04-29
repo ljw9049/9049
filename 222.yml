@@ -31,7 +31,7 @@
 
     - name: Result summary
       local_action:
-        copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}|{{ Uptime.stdout }}|{{ Version.stdout }}|{{ CPU_state}}|{{ MEM_state}}|{{ Fan_state }}|{{ Temp_state }}|{{ Power_state }}|{{ Int_Error_result }}|{{ Int_CRC_result }}"
+        copy content="{{ Name.stdout }}|{{ Serial.stdout }}|{{ PID.stdout }}"
         dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
 
     - name: Assemble from fragments from a directory
