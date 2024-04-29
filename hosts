@@ -29,8 +29,6 @@ ansible_python_interpreter=/usr/bin/python3
 Common_L3"#"1
 MPIS_L3"#"1 
 MPIS_L3"#"2 
-MPMP_L3"#"1 
-MPJJ_L3"#"1 
 AKCH_L3"#"1 
 AKCH_L3"#"2 
 MPID_L3"#"1 
