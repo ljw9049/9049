@@ -26,8 +26,8 @@ worksheet.set_column('L:L', 15)
 worksheet.set_column('M:M', 15)
 
 worksheet.write(0, 0, 'Name', format)
-worksheet.write(0, 1, 'Serial', format)
-worksheet.write(0, 2, 'PID', format)
+worksheet.write(0, 1, 'SN', format)
+worksheet.write(0, 2, 'Pid', format)
 
 
 row = 1
