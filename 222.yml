@@ -40,54 +40,6 @@
         dest: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
       ignore_errors: True
 
-    - name: Result modify1
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "', 'failed': False, 'changed': False}"
-        replace: ""
-
-    - name: Result modify1
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "'msg': u'"
-        replace: ""
-
-    - name: Result modify1
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "{'msg': '"
-        replace: ""
-
-    - name: Result modify1
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "{'msg': '"
-        replace: ""
-
-    - name: Result modify2
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "'failed': False, 'changed': False"
-        replace: ""
-
-    - name: Result modify3
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "',"
-        replace: ""
-
-    - name: Result modify4
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "{"
-        replace: ""
-
-    - name: Result modify5
-      replace:
-        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
-        regexp: "}"
-        replace: ""
-
     - name: To excel
       shell: python3 /var/lib/awx/projects/_11__ljw90/333.py
 
