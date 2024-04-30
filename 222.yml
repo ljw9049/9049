@@ -29,22 +29,19 @@
         state: directory
         mode: u=rwX,g=rX,o=rX
 
+
     - name: Result summary
       local_action:
-        copy content="{{ NAME.stdout }}"
-        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_NAME.txt"
-   
-    - name: Result summary
-      local_action:
-        copy content="{{ Serial.stdout }}"
-        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_Serial.txt"        
-  
-    - name: Result summary
-      local_action:
-        copy content="{{ PID.stdout }}"
-        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_PID.txt"
-    
-    
+        copy content="{{ NAME.stdout }}|{{ Serial.stdout }}|{{ PID.stdout }}"
+        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+
+    - name: Assemble from fragments from a directory
+      assemble:
+        src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+      ignore_errors: True
+      
+
 
     - name: To excel
       shell: python3 /var/lib/awx/projects/_11__ljw90/333.py
