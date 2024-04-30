@@ -1,16 +1,16 @@
 import xlsxwriter
 
 # Open the NAME.txt file
-file1 = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_NAME.txt", 'r')
-data1 = file1.readlines()
+file = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_NAME.txt", 'r')
+data = file.readlines()
 
 # Open the Serial.txt file
-file2 = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_Serial.txt", 'r')
-data2 = file2.readlines()
+file = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_Serial.txt", 'r')
+data = file.readlines()
 
 # Open the PID.txt file
-file3 = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_PID.txt", 'r')
-data3 = file3.readlines()
+file = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_PID.txt", 'r')
+data = file.readlines()
 
 workbook = xlsxwriter.Workbook('/var/lib/awx/projects/_11__ljw90/cisco.xlsx')
 worksheet = workbook.add_worksheet('Result')
