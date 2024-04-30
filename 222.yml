@@ -30,7 +30,7 @@
         mode: u=rwX,g=rX,o=rX
 
 
-    - name: Result summary
+  - name: Result summary
       local_action:
         copy:
           content: |
