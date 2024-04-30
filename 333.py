@@ -1,7 +1,17 @@
 import xlsxwriter
 
-file = open("/var/lib/awx/projects/_11__ljw90/Result/cisco.log", 'r')
-data = file.readlines()
+# Open the NAME.txt file
+file1 = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_NAME.txt", 'r')
+data1 = file1.readlines()
+
+# Open the Serial.txt file
+file2 = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_Serial.txt", 'r')
+data2 = file2.readlines()
+
+# Open the PID.txt file
+file3 = open("/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_PID.txt", 'r')
+data3 = file3.readlines()
+
 workbook = xlsxwriter.Workbook('/var/lib/awx/projects/_11__ljw90/cisco.xlsx')
 worksheet = workbook.add_worksheet('Result')
 format = workbook.add_format({'bold': True, 'align': 'center'})
@@ -29,11 +39,25 @@ worksheet.write(0, 0, 'NAME', format)
 worksheet.write(0, 1, 'Serial', format)
 worksheet.write(0, 2, 'PID', format)
 
-
 row = 1
 col = 0
 
-for i in data:
+# Write data from each file to the worksheet
+for i in data1:
+    for j in i.split('|'):
+        worksheet.write(row, col, j, format2)
+        col += 1
+    col = 0
+    row += 1
+
+for i in data2:
+    for j in i.split('|'):
+        worksheet.write(row, col, j, format2)
+        col += 1
+    col = 0
+    row += 1
+
+for i in data3:
     for j in i.split('|'):
         worksheet.write(row, col, j, format2)
         col += 1
@@ -41,6 +65,3 @@ for i in data:
     row += 1
 
 workbook.close()
-
-
-
