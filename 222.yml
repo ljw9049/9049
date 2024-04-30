@@ -36,7 +36,7 @@
           content: |
             name,sn,pid
             {{ NAME.stdout }},{{ Serial.stdout }},{{ PID.stdout }}
-         dest: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
 
     - name: Assemble from fragments from a directory
       assemble:
