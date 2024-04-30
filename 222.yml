@@ -32,17 +32,17 @@
     - name: Result summary
       local_action:
         copy content="{{ NAME.stdout }}"
-        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_NAME.txt"
    
     - name: Result summary
       local_action:
         copy content="{{ Serial.stdout }}"
-        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"        
+        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_Serial.txt"        
   
     - name: Result summary
       local_action:
         copy content="{{ PID.stdout }}"
-        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_PID.txt"
     
     - name: Assemble from fragments from a directory
       assemble:
