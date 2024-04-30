@@ -31,7 +31,7 @@
 
     - name: Result summary
       local_action:
-        copy content= |
+        copy content: |
         {{ NAME.stdout}}
         {{ Serial.stdout }}
         {{ PID.stdout }}
