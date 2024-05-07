@@ -4,7 +4,8 @@
   connection: 127.0.0.1
   gather_facts: no
 # strategy: free
-  
+
+  tasks:
     - name: modify2
       shell: cat FA/{{ inventory_hostname }} | tr ',NAME' '\nNAME'
       register: result
