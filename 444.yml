@@ -58,7 +58,7 @@
     - name: Make Result Directory
       local_action:
         module: file
-        path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}""
+        path: "Result"
         state: directory
         mode: u=rwX,g=rX,o=rX
 
