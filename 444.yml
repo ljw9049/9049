@@ -7,7 +7,7 @@
 
   tasks:
     - name: modify2
-      shell: cat FA/{{ inventory_hostname }} | tr ',NAME' '\nNAME'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | tr ',NAME' '\nNAME'
       register: result
 
     - name: show_backup2
@@ -69,8 +69,8 @@
 
     - name: Assemble Result Summary
       assemble:
-        src: "Result/"
-        dest: "result.csv"
+        src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
 
     - name: show_Result
-      shell: python3 To_excel.py
+      shell: python3 /var/lib/awx/projects/_11__ljw90/333.py
