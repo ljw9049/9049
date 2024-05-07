@@ -70,7 +70,7 @@
     - name: Assemble Result Summary
       assemble:
         src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
-        dest: "/var/lib/awx/projects/_11__ljw90/Result/result.log"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/result.csv"
 
     - name: show_Result
       shell: python3 /var/lib/awx/projects/_11__ljw90/333.py
