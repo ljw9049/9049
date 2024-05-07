@@ -13,7 +13,7 @@
     - name: show_backup2
       local_action:
         copy content="{{ result.stdout }}"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify3
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g'  | sed 's/^$/!/g'
@@ -22,7 +22,7 @@
     - name: show_backup3
       local_action:
         copy content="{{ result2.stdout }}"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed 's/\r$//'
@@ -31,7 +31,7 @@
     - name: show_backup3
       local_action:
         copy content="{{ result4.stdout }}"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g' | sed 's/^$/!/g' | sed 's/^M/!/g'
@@ -40,7 +40,7 @@
     - name: show_backup3
       local_action:
         copy content="{{ result5.stdout }}"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -n '/^NAME/,/\n/p' | tr '\r' ' ' | tr '\n' ',' | sed 's/\!/\n/g'
@@ -49,7 +49,7 @@
     - name: show_backup3
       local_action:
         copy content="{{ result6.stdout }}"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -n '/,NAME:/,/NAME:/p'
