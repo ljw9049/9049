@@ -1,0 +1,69 @@
+  
+    - name: modify2
+      shell: cat FA/{{ inventory_hostname }} | tr ',NAME' '\nNAME'
+      register: result
+
+    - name: show_backup2
+      local_action:
+        copy content="{{ result.stdout }}"
+        dest=FA/{{ inventory_hostname }}_2
+
+    - name: modify3
+      shell: cat FA/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g'  | sed 's/^$/!/g'
+      register: result2
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result2.stdout }}"
+        dest=FA/{{ inventory_hostname }}_2
+
+    - name: modify4
+      shell: cat FA/{{ inventory_hostname }}_2 | sed 's/\r$//'
+      register: result4
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result4.stdout }}"
+        dest=FA/{{ inventory_hostname }}_2
+
+    - name: modify4
+      shell: cat FA/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g' | sed 's/^$/!/g' | sed 's/^M/!/g'
+      register: result5
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result5.stdout }}"
+        dest=FA/{{ inventory_hostname }}_2
+
+    - name: modify4
+      shell: cat FA/{{ inventory_hostname }}_2 | sed -n '/^NAME/,/\n/p' | tr '\r' ' ' | tr '\n' ',' | sed 's/\!/\n/g'
+      register: result6
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result6.stdout }}"
+        dest=FA/{{ inventory_hostname }}_2
+
+    - name: modify4
+      shell: cat FA/{{ inventory_hostname }}_2 | sed -n '/,NAME:/,/NAME:/p'
+      register: result7
+
+    - name: Make Result Directory
+      local_action:
+        module: file
+        path: "Result"
+        state: directory
+        mode: u=rwX,g=rX,o=rX
+
+    - name: csv
+      copy:
+        content: "{{ inventory_hostname}}|{{result7.stdout}}"
+        dest: Result/{{inventory_hostname}}.csv
+
+    - name: Assemble Result Summary
+      assemble:
+        src: "Result/"
+        dest: "result.csv"
+
+    - name: show_Result
+      shell: python3 To_excel.py
