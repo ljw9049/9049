@@ -55,23 +55,22 @@
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -n '/,NAME:/,/NAME:/p'
       register: result7
 
-    - name: Make Result Directory
-      local_action:
-        module: file
-        path: "Result"
-        state: directory
-        mode: u=rwX,g=rX,o=rX
+#    - name: Make Result Directory
+#      local_action:
+#        module: file
+#        path: "Result"
+#        state: directory
+#        mode: u=rwX,g=rX,o=rX
 
-    - name: csv
-      copy:
-        content: "{{ inventory_hostname }}|{{ result7.stdout }}"
-        dest: Result/{{inventory_hostname}}.csv
+#    - name: csv
+#      copy:
+#        content: "{{ inventory_hostname }}|{{ result7.stdout }}"
+#        dest: Result/{{inventory_hostname}}.csv
 
-    - name: Assemble Result Summary
-      assemble:
-        src: "Result/"
-        dest: "result.csv"
+#    - name: Assemble Result Summary
+#      assemble:
+#        src: "Result/"
+#        dest: "result.csv"
 
-    - name: show_Result
-      shell: python3 /var/lib/awx/projects/_11__ljw90/555.py
-
+#    - name: show_Result
+#      shell: python3 /var/lib/awx/projects/_11__ljw90/555.py
