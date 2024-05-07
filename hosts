@@ -61,6 +61,8 @@ AKC_FW_1
 AKHD_SRX1
 Groupware_FW_1
 SRX_AK_MAPO_FW
+AKC_US_BB"#"1 
+AKC_US_BB"#"2
 
 [juniper]
 AKU_new_building_sw ansible_host=10.100.18.252
