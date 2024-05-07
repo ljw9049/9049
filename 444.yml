@@ -64,19 +64,19 @@
     - name: Make Result Directory
       local_action:
         module: file
-        path: "Result"
+        path: "/var/lib/awx/projects/_11__ljw90/Result"
         state: directory
         mode: u=rwX,g=rX,o=rX
 
     - name: csv
       copy:
         content: "{{ inventory_hostname }}|{{ result7.stdout }}"
-        dest: Result/{{inventory_hostname}}.csv
+        dest: /var/lib/awx/projects/_11__ljw90/Result/{{inventory_hostname}}.csv
 
     - name: Assemble Result Summary
       assemble:
-        src: "Result/"
-        dest: "result.csv"
+        src: "/var/lib/awx/projects/_11__ljw90/Result"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/result.csv"
 
     - name: show_Result
       shell: python3 /var/lib/awx/projects/_11__ljw90/555.py
