@@ -75,7 +75,7 @@
 
     - name: Assemble Result Summary
       assemble:
-        src: "/var/lib/awx/projects/_11__ljw90/Result"
+        src: "/var/lib/awx/projects/_11__ljw90"
         dest: "/var/lib/awx/projects/_11__ljw90/Result/result.csv"
 
     - name: show_Result
