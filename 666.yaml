@@ -7,7 +7,7 @@
     mail: 
       subject:  스위치 INV 체크 
       body: 참고
-      attach: /var/lib/awx/projects/_11__ljw90/cisco.xlsx
+      attach: /var/lib/awx/projects/_11__ljw90/result.xlsx
       host: spam.aekyung.kr
       port: 25
       sender: ansible@aekyung.kr
