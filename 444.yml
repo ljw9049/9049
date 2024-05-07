@@ -7,7 +7,7 @@
 
   tasks:
     - name: modify2
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | tr ',NAME' '\nNAME'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | tr ',NAME' '\nNAME'
       register: result
 
     - name: show_backup2
