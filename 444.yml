@@ -7,7 +7,8 @@
 
   tasks:
     - name: modify2
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | tr ',NAME' '\nNAME'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | tr ',NAME' '\nNAME'
+      ignore_errors: True
       register: result
 
     - name: show_backup2
@@ -16,7 +17,8 @@
         dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify3
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | sed -e 's/^ *//g' -e 's/ *$//g'  | sed 's/^$/!/g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -e 's/^ *//g' -e 's/ *$//g'  | sed 's/^$/!/g'
+      ignore_errors: True
       register: result2
 
     - name: show_backup3
@@ -25,7 +27,8 @@
         dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | sed 's/\r$//'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed 's/\r$//'
+      ignore_errors: True
       register: result4
 
     - name: show_backup3
@@ -34,7 +37,8 @@
         dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | sed -e 's/^ *//g' -e 's/ *$//g' | sed 's/^$/!/g' | sed 's/^M/!/g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -e 's/^ *//g' -e 's/ *$//g' | sed 's/^$/!/g' | sed 's/^M/!/g'
+      ignore_errors: True
       register: result5
 
     - name: show_backup3
@@ -43,7 +47,8 @@
         dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | sed -n '/^NAME/,/\n/p' | tr '\r' ' ' | tr '\n' ',' | sed 's/\!/\n/g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/^NAME/,/\n/p' | tr '\r' ' ' | tr '\n' ',' | sed 's/\!/\n/g'
+      ignore_errors: True
       register: result6
 
     - name: show_backup3
@@ -52,7 +57,8 @@
         dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | sed -n '/,NAME:/,/NAME:/p'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/,NAME:/,/NAME:/p'
+      ignore_errors: True
       register: result7
 
 #    - name: Make Result Directory
