@@ -1,1 +1,21 @@
+---
+- hosts: 127.0.0.1
+  gather_facts: no
+  
+  tasks:
+  - name: send email with the report attached
+    mail: 
+      subject:  스위치 INV 체크 
+      body: 참고
+      attach: /var/lib/awx/projects/_11__ljw90/cisco.xlsx
+      host: spam.aekyung.kr
+      port: 25
+      sender: ansible@aekyung.kr
+      recipients: 
+      - jungwoo.lee@aekyung.kr
+      - jhchoi4452@aekyung.kr
+      - holay@aekyung.kr
+      
+      
+    run_once: true
 
