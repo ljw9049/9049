@@ -64,7 +64,7 @@
 
     - name: csv
       copy:
-        content: "{{ inventory_hostname }}|{{result7.stdout}}"
+        content: "{{ inventory_hostname }}{{result7.stdout}}"
         dest: /var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.csv
 
     - name: Assemble Result Summary
