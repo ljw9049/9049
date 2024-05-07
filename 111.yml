@@ -26,3 +26,23 @@
         copy content="\n\nshow inventory\n\n{{ show.stdout[1] }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt
 
+    - name: show_backup2
+      local_action:
+        copy content="{{ result.stdout }}"
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result2.stdout }}"
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result5.stdout }}"
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2        
+
+    - name: show_backup3
+      local_action:
+        copy content="{{ result6.stdout }}"
+        dest=/var/lib/awx/projects/_11__ljw90/{{ inventory_hostname }}_2
+        
