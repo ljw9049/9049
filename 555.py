@@ -16,6 +16,12 @@ format.set_bg_color('#A9BCF5')
 
 row = 1
 col = 0
+worksheet.set_column('A:A', 20)
+worksheet.set_column('B:B', 15)
+worksheet.set_column('C:C', 15)
+worksheet.set_column('D:D', 15)
+worksheet.set_column('E:E', 15)
+worksheet.set_column('F:F', 15)
 worksheet.write(0, 0, 'Hostname', format)
 worksheet.write(0, 1, 'NAME', format)
 worksheet.write(0, 2, 'DESCR', format)
