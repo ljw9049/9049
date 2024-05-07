@@ -7,58 +7,58 @@
 
   tasks:
     - name: modify2
-      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | tr ',NAME' '\nNAME'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }} | tr ',NAME' '\nNAME'
       register: result
 
     - name: show_backup2
       local_action:
-        copy content="{{ result.stdout }}"
-        dest=FA/{{ inventory_hostname }}_2
+        copy content="\n\nshow inventory\n\n{{ result.stdout }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify3
-      shell: cat FA/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g'  | sed 's/^$/!/g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g'  | sed 's/^$/!/g'
       register: result2
 
     - name: show_backup3
       local_action:
-        copy content="{{ result2.stdout }}"
-        dest=FA/{{ inventory_hostname }}_2
+        copy content="\n\nshow inventory\n\n{{ result2.stdout }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat FA/{{ inventory_hostname }}_2 | sed 's/\r$//'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed 's/\r$//'
       register: result4
 
     - name: show_backup3
       local_action:
-        copy content="{{ result4.stdout }}"
-        dest=FA/{{ inventory_hostname }}_2
+        copy content="\n\nshow inventory\n\n{{ result4.stdout }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat FA/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g' | sed 's/^$/!/g' | sed 's/^M/!/g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -e 's/^ *//g' -e 's/ *$//g' | sed 's/^$/!/g' | sed 's/^M/!/g'
       register: result5
 
     - name: show_backup3
       local_action:
-        copy content="{{ result5.stdout }}"
-        dest=FA/{{ inventory_hostname }}_2
+        copy content="\n\nshow inventory\n\n{{ result5.stdout }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat FA/{{ inventory_hostname }}_2 | sed -n '/^NAME/,/\n/p' | tr '\r' ' ' | tr '\n' ',' | sed 's/\!/\n/g'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -n '/^NAME/,/\n/p' | tr '\r' ' ' | tr '\n' ',' | sed 's/\!/\n/g'
       register: result6
 
     - name: show_backup3
       local_action:
-        copy content="{{ result6.stdout }}"
-        dest=FA/{{ inventory_hostname }}_2
+        copy content="\n\nshow inventory\n\n{{ result6.stdout }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
-      shell: cat FA/{{ inventory_hostname }}_2 | sed -n '/,NAME:/,/NAME:/p'
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2 | sed -n '/,NAME:/,/NAME:/p'
       register: result7
 
     - name: Make Result Directory
       local_action:
         module: file
-        path: "Result"
+        path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
         state: directory
         mode: u=rwX,g=rX,o=rX
 
@@ -70,7 +70,7 @@
     - name: Assemble Result Summary
       assemble:
         src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
-        dest: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/result.log"
 
     - name: show_Result
       shell: python3 /var/lib/awx/projects/_11__ljw90/333.py
