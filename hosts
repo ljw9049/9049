@@ -8,8 +8,8 @@
 #MPID_L3"#"2 ansible_host=172.100.10.3
 #MPHD_L3"#"1 ansible_host=10.1.24.2
 #MPHD_L3"#"2 ansible_host=10.1.24.3
-AKC_US_BB_1 ansible_host=10.100.100.252
-AKC_US_BB_2 ansible_host=10.100.100.253
+AKC_US_BB"#"1 ansible_host=10.100.100.252
+AKC_US_BB"#"2 ansible_host=10.100.100.253
 
 
 [ios:vars]
