@@ -5,9 +5,9 @@ now = datetime.now().date()
 nowstring = datetime.strftime(now,'%Y%m%d')
 filename = 'result.csv'
 
-file = open(filename, 'r')
+file = open("/var/lib/awx/projects/_11__ljw90/Result/result.csv", 'r')
 data = file.readlines()
-workbook = xlsxwriter.Workbook('result.txt.xlsx')
+workbook = xlsxwriter.Workbook('/var/lib/awx/projects/_11__ljw90/result.xlsx')
 worksheet = workbook.add_worksheet('Sheet')
 format = workbook.add_format({'bold': True, 'align': 'center'})
 format.set_border()
