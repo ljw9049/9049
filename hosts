@@ -10,7 +10,10 @@
 #MPHD_L3"#"2 ansible_host=10.1.24.3
 AKC_US_BB"#"1 ansible_host=10.100.100.252
 AKC_US_BB"#"2 ansible_host=10.100.100.253
-
+AKC_CY_BB"#"1 ansible_host=10.200.100.2
+AKC_CY_BB"#"2 ansible_host=10.200.100.3
+AKC_JJ_BB"#"1 ansible_host=10.100.216.2
+AKC_JJ_BB"#"2 ansible_host=10.100.216.3
 
 [ios:vars]
 #ansible_network_os=ios
@@ -63,24 +66,29 @@ Groupware_FW_1
 SRX_AK_MAPO_FW
 AKC_US_BB"#"1 
 AKC_US_BB"#"2
+AKC_CY_BB"#"1
+AKC_CY_BB"#"2
+AKC_JJ_BB"#"1
+AKC_JJ_BB"#"2
+
 
 [juniper]
-AKU_new_building_sw ansible_host=10.100.18.252
-AKC_ULSAN_VPN ansible_host=10.100.12.254
-AKC_BUSAN_VPN ansible_host=10.100.13.254
-AKC_CHUNGYANG_FAC_VPN ansible_host=10.200.15.1
-AKC_DEAJEON_TECH_VPN ansible_host=10.200.12.1
-AKC_JEONJU_VPN ansible_host=10.100.16.254
-AKCT_DAEGU_VPN ansible_host=10.150.14.1
-AKCT_DAEJEON ansible_host=192.168.123.1
-AKCT_SIHWA_VPN ansible_host=10.150.13.1
-AKCT_CHEONGYANG_VPN ansible_host=10.150.16.1
-AKCT_POHANG_VPN ansible_host=10.150.12.1
-AKS_KIDC_A ansible_host=172.26.2.1
-AKC_FW_1 ansible_host=172.16.50.111
-AKHD_SRX1 ansible_host=10.90.1.1
-Groupware_FW_1 ansible_host=10.250.20.193
-SRX_AK_MAPO_FW ansible_host=10.1.10.1
+#AKU_new_building_sw ansible_host=10.100.18.252
+#AKC_ULSAN_VPN ansible_host=10.100.12.254
+#AKC_BUSAN_VPN ansible_host=10.100.13.254
+#AKC_CHUNGYANG_FAC_VPN ansible_host=10.200.15.1
+#AKC_DEAJEON_TECH_VPN ansible_host=10.200.12.1
+#AKC_JEONJU_VPN ansible_host=10.100.16.254
+#AKCT_DAEGU_VPN ansible_host=10.150.14.1
+#AKCT_DAEJEON ansible_host=192.168.123.1
+#AKCT_SIHWA_VPN ansible_host=10.150.13.1
+#AKCT_CHEONGYANG_VPN ansible_host=10.150.16.1
+#AKCT_POHANG_VPN ansible_host=10.150.12.1
+#AKS_KIDC_A ansible_host=172.26.2.1
+#AKC_FW_1 ansible_host=172.16.50.111
+#AKHD_SRX1 ansible_host=10.90.1.1
+#Groupware_FW_1 ansible_host=10.250.20.193
+#SRX_AK_MAPO_FW ansible_host=10.1.10.1
 
 [juniper:vars]
 ansible_network_os=junos
