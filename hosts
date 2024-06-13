@@ -10,10 +10,74 @@
 #MPHD_L3"#"2 ansible_host=10.1.24.3
 #AKC_US_BB"#"1 ansible_host=10.100.100.252
 #AKC_US_BB"#"2 ansible_host=10.100.100.253
-AKC_CY_BB"#"1 ansible_host=10.200.100.2
-AKC_CY_BB"#"2 ansible_host=10.200.100.3
+#AKC_CY_BB"#"1 ansible_host=10.200.100.2
+#AKC_CY_BB"#"2 ansible_host=10.200.100.3
 #AKC_JJ_BB"#"1 ansible_host=10.100.216.2
 #AKC_JJ_BB"#"2 ansible_host=10.100.216.3
+AKC_CY_BB"#"1 ansible_host=10.200.100.2
+AKC_CY_BB"#"2 ansible_host=10.200.100.3
+AKC_CY_WLC ansible_host=10.200.100.10
+AKC_CY_SW"#"11 ansible_host=10.200.100.11
+AKC_CY_SW"#"12 ansible_host=10.200.100.12
+AKC_CY_SW"#"13 ansible_host=10.200.100.13
+AKC_CY_SW"#"14 ansible_host=10.200.100.14
+AKC_CY_SW"#"15 ansible_host=10.200.100.15
+AKC_CY_SW"#"16 ansible_host=10.200.100.16
+AKC_CY_SW"#"17 ansible_host=10.200.100.17
+AKC_CY_SW"#"18 ansible_host=10.200.100.18
+AKC_CY_SW"#"19 ansible_host=10.200.100.19
+AKC_CY_SW"#"20 ansible_host=10.200.100.20
+AKC_CY_SW"#"21 ansible_host=10.200.100.21
+AKC_CY_SW"#"22 ansible_host=10.200.100.22
+AKC_CY_SW"#"23 ansible_host=10.200.100.23
+AKC_CY_SW"#"24 ansible_host=10.200.100.24
+AKC_CY_SW"#"25 ansible_host=10.200.100.25
+AKC_CY_SW"#"26 ansible_host=10.200.100.26
+AKC_CY_SW"#"27 ansible_host=10.200.100.27
+AKC_CY_SW"#"28 ansible_host=10.200.100.28
+AKC_CY_SW"#"29 ansible_host=10.200.100.29
+AKC_CY_SW"#"30 ansible_host=10.200.100.30
+AKC_CY_SW"#"31 ansible_host=10.200.100.31
+AKC_CY_SW"#"32 ansible_host=10.200.100.32
+AKC_CY_SW"#"33 ansible_host=10.200.100.33
+AKC_CY_SW"#"34 ansible_host=10.200.100.34
+AKC_CY_SW"#"35 ansible_host=10.200.100.35
+AKC_CY_SW"#"36 ansible_host=10.200.100.36
+AKC_CY_SW"#"37 ansible_host=10.200.100.37
+AKC_CY_SW"#"38 ansible_host=10.200.100.38
+AKC_CY_SW"#"39 ansible_host=10.200.100.39
+AKC_CY_SW"#"40 ansible_host=10.200.100.40
+AKC_CY_SW"#"41 ansible_host=10.200.100.41
+AKC_CY_SW"#"42 ansible_host=10.200.100.42
+AKC_CY_SW"#"43 ansible_host=10.200.100.43
+AKC_CY_SW"#"44 ansible_host=10.200.100.44
+AKC_CY_SW"#"45 ansible_host=10.200.100.45
+AKC_CY_SW"#"46 ansible_host=10.200.100.46
+AKC_CY_SW"#"47 ansible_host=10.200.100.47
+AKC_CY_SW"#"48 ansible_host=10.200.100.48
+AKC_CY_SW"#"49 ansible_host=10.200.100.49
+AKC_CY_SW"#"50 ansible_host=10.200.100.50
+AKC_CY_SW"#"51 ansible_host=10.200.100.51
+AKC_CY_SW"#"52 ansible_host=10.200.100.52
+AKC_CY_SW"#"53 ansible_host=10.200.100.53
+AKC_CY_SW"#"54 ansible_host=10.200.100.54
+AKC_CY_SW"#"55 ansible_host=10.200.100.55
+AKC_CY_SW"#"56 ansible_host=10.200.100.56
+AKC_CY_SW"#"57 ansible_host=10.200.100.57
+AKC_CY_SW"#"58 ansible_host=10.200.100.58
+AKC_CY_SW"#"59 ansible_host=10.200.100.59
+AKC_CY_SW"#"60 ansible_host=10.200.100.60
+AKC_CY_SW"#"61 ansible_host=10.200.100.61
+AKC_CY_SW"#"62 ansible_host=10.200.100.62
+AKC_CY_SW"#"63 ansible_host=10.200.100.63
+AKC_CY_SW"#"64 ansible_host=10.200.100.64
+AKC_CY_SW"#"65 ansible_host=10.200.100.65
+AKC_CY_SW"#"66 ansible_host=10.200.100.66
+AKC_CY_SW"#"67 ansible_host=10.200.100.67
+AKC_CY_SW"#"68 ansible_host=10.200.100.68
+AKC_CY_SW"#"69 ansible_host=10.200.100.69
+AKC_CY_SW"#"70 ansible_host=10.200.100.70
+
 
 [ios:vars]
 #ansible_network_os=ios
@@ -70,6 +134,69 @@ AKC_CY_BB"#"1
 AKC_CY_BB"#"2
 AKC_JJ_BB"#"1
 AKC_JJ_BB"#"2
+AKC_CY_BB"#"1
+AKC_CY_BB"#"2
+AKC_CY_WLC
+AKC_CY_SW"#"11
+AKC_CY_SW"#"12
+AKC_CY_SW"#"13
+AKC_CY_SW"#"14
+AKC_CY_SW"#"15
+AKC_CY_SW"#"16
+AKC_CY_SW"#"17
+AKC_CY_SW"#"18
+AKC_CY_SW"#"19
+AKC_CY_SW"#"20
+AKC_CY_SW"#"21
+AKC_CY_SW"#"22
+AKC_CY_SW"#"23
+AKC_CY_SW"#"24
+AKC_CY_SW"#"25
+AKC_CY_SW"#"26
+AKC_CY_SW"#"27
+AKC_CY_SW"#"28
+AKC_CY_SW"#"29
+AKC_CY_SW"#"30
+AKC_CY_SW"#"31
+AKC_CY_SW"#"32
+AKC_CY_SW"#"33
+AKC_CY_SW"#"34
+AKC_CY_SW"#"35
+AKC_CY_SW"#"36
+AKC_CY_SW"#"37
+AKC_CY_SW"#"38
+AKC_CY_SW"#"39
+AKC_CY_SW"#"40
+AKC_CY_SW"#"41
+AKC_CY_SW"#"42
+AKC_CY_SW"#"43
+AKC_CY_SW"#"44
+AKC_CY_SW"#"45
+AKC_CY_SW"#"46
+AKC_CY_SW"#"47
+AKC_CY_SW"#"48
+AKC_CY_SW"#"49
+AKC_CY_SW"#"50
+AKC_CY_SW"#"51
+AKC_CY_SW"#"52
+AKC_CY_SW"#"53
+AKC_CY_SW"#"54
+AKC_CY_SW"#"55
+AKC_CY_SW"#"56
+AKC_CY_SW"#"57
+AKC_CY_SW"#"58
+AKC_CY_SW"#"59
+AKC_CY_SW"#"60
+AKC_CY_SW"#"61
+AKC_CY_SW"#"62
+AKC_CY_SW"#"63
+AKC_CY_SW"#"64
+AKC_CY_SW"#"65
+AKC_CY_SW"#"66
+AKC_CY_SW"#"67
+AKC_CY_SW"#"68
+AKC_CY_SW"#"69
+AKC_CY_SW"#"70
 
 
 [juniper]
