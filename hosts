@@ -39,24 +39,6 @@ AKC_CY_SW"#"29 ansible_host=10.200.100.29
 AKC_CY_SW"#"30 ansible_host=10.200.100.30
 AKC_CY_SW"#"31 ansible_host=10.200.100.31
 AKC_CY_SW"#"32 ansible_host=10.200.100.32
-AKC_CY_SW"#"33 ansible_host=10.200.100.33
-AKC_CY_SW"#"34 ansible_host=10.200.100.34
-AKC_CY_SW"#"35 ansible_host=10.200.100.35
-AKC_CY_SW"#"36 ansible_host=10.200.100.36
-AKC_CY_SW"#"37 ansible_host=10.200.100.37
-AKC_CY_SW"#"38 ansible_host=10.200.100.38
-AKC_CY_SW"#"39 ansible_host=10.200.100.39
-AKC_CY_SW"#"40 ansible_host=10.200.100.40
-AKC_CY_SW"#"41 ansible_host=10.200.100.41
-AKC_CY_SW"#"42 ansible_host=10.200.100.42
-AKC_CY_SW"#"43 ansible_host=10.200.100.43
-AKC_CY_SW"#"44 ansible_host=10.200.100.44
-AKC_CY_SW"#"45 ansible_host=10.200.100.45
-AKC_CY_SW"#"46 ansible_host=10.200.100.46
-AKC_CY_SW"#"47 ansible_host=10.200.100.47
-AKC_CY_SW"#"48 ansible_host=10.200.100.48
-AKC_CY_SW"#"49 ansible_host=10.200.100.49
-AKC_CY_SW"#"50 ansible_host=10.200.100.50
 AKC_CY_SW"#"51 ansible_host=10.200.100.51
 AKC_CY_SW"#"52 ansible_host=10.200.100.52
 AKC_CY_SW"#"53 ansible_host=10.200.100.53
@@ -159,24 +141,6 @@ AKC_CY_SW"#"29
 AKC_CY_SW"#"30
 AKC_CY_SW"#"31
 AKC_CY_SW"#"32
-AKC_CY_SW"#"33
-AKC_CY_SW"#"34
-AKC_CY_SW"#"35
-AKC_CY_SW"#"36
-AKC_CY_SW"#"37
-AKC_CY_SW"#"38
-AKC_CY_SW"#"39
-AKC_CY_SW"#"40
-AKC_CY_SW"#"41
-AKC_CY_SW"#"42
-AKC_CY_SW"#"43
-AKC_CY_SW"#"44
-AKC_CY_SW"#"45
-AKC_CY_SW"#"46
-AKC_CY_SW"#"47
-AKC_CY_SW"#"48
-AKC_CY_SW"#"49
-AKC_CY_SW"#"50
 AKC_CY_SW"#"51
 AKC_CY_SW"#"52
 AKC_CY_SW"#"53
