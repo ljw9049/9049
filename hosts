@@ -59,25 +59,25 @@
 #AKC_CY_SW"#"68 ansible_host=10.200.100.68
 #AKC_CY_SW"#"69 ansible_host=10.200.100.69
 #AKC_CY_SW"#"70 ansible_host=10.200.100.70
-AKC_R&D_BB"#"1 ansible_host=10.100.215.2
-AKC_R&D_BB"#"2 ansible_host=10.100.215.3
-AKC_R&D_WLC ansible_host=10.100.215.10
-AKC_R&D_SW"#"11 ansible_host=10.100.215.11
-AKC_R&D_SW"#"12 ansible_host=10.100.215.12
-AKC_R&D_SW"#"21 ansible_host=10.100.215.21
-AKC_R&D_SW"#"22 ansible_host=10.100.215.22
-AKC_R&D_SW"#"23 ansible_host=10.100.215.23
-AKC_R&D_SW"#"24 ansible_host=10.100.215.24
-AKC_R&D_SW"#"31 ansible_host=10.100.215.31
-AKC_R&D_SW"#"32 ansible_host=10.100.215.32
-AKC_R&D_SW"#"33 ansible_host=10.100.215.33
-AKC_R&D_SW"#"34 ansible_host=10.100.215.34
-AKC_R&D_SW"#"35 ansible_host=10.100.215.35
-AKC_R&D_SW"#"41 ansible_host=10.100.215.41
-AKC_R&D_SW"#"42 ansible_host=10.100.215.42
-AKC_R&D_SW"#"51 ansible_host=10.100.215.51
-AKC_R&D_SW"#"52 ansible_host=10.100.215.52
-AKC_R&D_SW"#"61 ansible_host=10.100.215.61
+AKC_RnD_BB"#"1 ansible_host=10.100.215.2
+AKC_RnD_BB"#"2 ansible_host=10.100.215.3
+AKC_RnD_WLC ansible_host=10.100.215.10
+AKC_RnD_SW"#"11 ansible_host=10.100.215.11
+AKC_RnD_SW"#"12 ansible_host=10.100.215.12
+AKC_RnD_SW"#"21 ansible_host=10.100.215.21
+AKC_RnD_SW"#"22 ansible_host=10.100.215.22
+AKC_RnD_SW"#"23 ansible_host=10.100.215.23
+AKC_RnD_SW"#"24 ansible_host=10.100.215.24
+AKC_RnD_SW"#"31 ansible_host=10.100.215.31
+AKC_RnD_SW"#"32 ansible_host=10.100.215.32
+AKC_RnD_SW"#"33 ansible_host=10.100.215.33
+AKC_RnD_SW"#"34 ansible_host=10.100.215.34
+AKC_RnD_SW"#"35 ansible_host=10.100.215.35
+AKC_RnD_SW"#"41 ansible_host=10.100.215.41
+AKC_RnD_SW"#"42 ansible_host=10.100.215.42
+AKC_RnD_SW"#"51 ansible_host=10.100.215.51
+AKC_RnD_SW"#"52 ansible_host=10.100.215.52
+AKC_RnD_SW"#"61 ansible_host=10.100.215.61
 
 [ios:vars]
 #ansible_network_os=ios
@@ -179,25 +179,25 @@ AKC_CY_SW"#"67
 AKC_CY_SW"#"68
 AKC_CY_SW"#"69
 AKC_CY_SW"#"70
-AKC_R&D_BB"#"1
-AKC_R&D_BB"#"2
-AKC_R&D_WLC
-AKC_R&D_SW"#"11
-AKC_R&D_SW"#"12
-AKC_R&D_SW"#"21
-AKC_R&D_SW"#"22
-AKC_R&D_SW"#"23
-AKC_R&D_SW"#"24
-AKC_R&D_SW"#"31
-AKC_R&D_SW"#"32
-AKC_R&D_SW"#"33
-AKC_R&D_SW"#"34
-AKC_R&D_SW"#"35
-AKC_R&D_SW"#"41
-AKC_R&D_SW"#"42
-AKC_R&D_SW"#"51
-AKC_R&D_SW"#"52
-AKC_R&D_SW"#"61
+AKC_RnD_BB"#"1
+AKC_RnD_BB"#"2
+AKC_RnD_WLC
+AKC_RnD_SW"#"11
+AKC_RnD_SW"#"12
+AKC_RnD_SW"#"21
+AKC_RnD_SW"#"22
+AKC_RnD_SW"#"23
+AKC_RnD_SW"#"24
+AKC_RnD_SW"#"31
+AKC_RnD_SW"#"32
+AKC_RnD_SW"#"33
+AKC_RnD_SW"#"34
+AKC_RnD_SW"#"35
+AKC_RnD_SW"#"41
+AKC_RnD_SW"#"42
+AKC_RnD_SW"#"51
+AKC_RnD_SW"#"52
+AKC_RnD_SW"#"61
 
 [juniper]
 #AKU_new_building_sw ansible_host=10.100.18.252
