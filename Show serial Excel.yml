@@ -15,13 +15,13 @@
       shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show version/,/show processes cpu/p' | grep -E "System serial|System Serial" | awk '{print $5; exit}' | sort -u
       ignore_errors: True
       register: Serial
-
-   - name: Make Result Directory
-     local_action:
-       module: file
-       path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
-       state: directory
-       mode: u=rwX,g=rX,o=rX
+      
+    - name: Make Result Directory
+      local_action:
+        module: file
+        path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        state: directory
+        mode: u=rwX,g=rX,o=rX
 
     - name: Result summary
       local_action:
@@ -83,4 +83,4 @@
         replace: ""
 
     - name: To excel
-      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel_Show_serial.py
+      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel.py
