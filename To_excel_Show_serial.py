@@ -27,7 +27,7 @@ worksheet.write(0, 0, 'Hostname', format)
 worksheet.write(0, 1, 'Serial', format)
 
 for i in data:
-    for j in i.split(','):
+    for j in i.split('|'):
         worksheet.write(row, col, j)
         col += 1
     col = 0
