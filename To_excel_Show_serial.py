@@ -6,7 +6,7 @@ now = datetime.now().date()
 nowstring = datetime.strftime(now,'%Y%m%d')
 filename = 'result.csv'
 
-file = open("/var/lib/awx/projects/_11__ljw90/Result/result.csv", 'r')
+file = open("/var/lib/awx/projects/_11__ljw90/Result/cisco.log", 'r')
 data = file.readlines()
 workbook = xlsxwriter.Workbook('/var/lib/awx/projects/_11__ljw90/result.xlsx')
 worksheet = workbook.add_worksheet('Sheet')
