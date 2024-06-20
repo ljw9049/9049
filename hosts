@@ -112,6 +112,8 @@ AKC_US_SW"#"41 ansible_host=10.100.100.41
 AKC_JJ_SW"#"11 ansible_host=10.100.216.11
 AKC_JJ_SW"#"12 ansible_host=10.100.216.12
 AKC_JJ_SW"#"13 ansible_host=10.100.216.13
+AKC_PT_SW"#"11 ansible_host=10.200.17.11
+
 
 
 [ios:vars]
@@ -266,7 +268,8 @@ AKC_US_SW"#"40
 AKC_US_SW"#"41
 AKC_JJ_SW"#"11 
 AKC_JJ_SW"#"12 
-AKC_JJ_SW"#"13 
+AKC_JJ_SW"#"13
+AKC_PT_SW"#"11
 
 [juniper]
 #AKU_new_building_sw ansible_host=10.100.18.252
