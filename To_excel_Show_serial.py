@@ -24,7 +24,7 @@ worksheet.set_column('D:D', 15)
 worksheet.set_column('E:E', 15)
 worksheet.set_column('F:F', 15)
 worksheet.write(0, 0, 'Hostname', format)
-worksheet.write(0, 1, 'SN', format)
+worksheet.write(0, 1, 'Serial', format)
 
 for i in data:
     for j in i.split(','):
