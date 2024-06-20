@@ -1,1 +1,79 @@
-11
+---
+- name: CISCO switch check
+  hosts: log
+  connection: 127.0.0.1
+  gather_facts: no
+# strategy: free
+
+  tasks:
+    - name: hostname
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | grep 'hostname' | awk '{print $2; exit}'
+      ignore_errors: True
+      register: Hostname
+
+    - name: serial
+      shell: cat /var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt | sed -n '/show version/,/show processes cpu/p' | grep -E "System serial|System Serial" | awk '{print $5; exit}' | sort -u
+      ignore_errors: True
+      register: Serial
+
+    - name: Result summary
+      local_action:
+        copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}"
+        dest="/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt"
+
+    - name: Assemble from fragments from a directory
+      assemble:
+        src: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        dest: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+      ignore_errors: True
+
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "', 'failed': False, 'changed': False}"
+        replace: ""
+
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "'msg': u'"
+        replace: ""
+
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "{'msg': '"
+        replace: ""
+
+    - name: Result modify1
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "{'msg': '"
+        replace: ""
+
+    - name: Result modify2
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "'failed': False, 'changed': False"
+        replace: ""
+
+    - name: Result modify3
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "',"
+        replace: ""
+
+    - name: Result modify4
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "{"
+        replace: ""
+
+    - name: Result modify5
+      replace:
+        path: "/var/lib/awx/projects/_11__ljw90/Result/cisco.log"
+        regexp: "}"
+        replace: ""
+
+    - name: To excel
+      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel.py
