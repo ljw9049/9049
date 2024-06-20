@@ -12,15 +12,7 @@
           - terminal length 0
           - show run
           - show version
-          - show processes cpu
-          - show processes memory
-          - show env all
-          - show interfaces status err-disabled
-          - show interfaces | in up|CRC
-          - show interfaces status
-          - show interfaces counters errors          
-          - show inventory
-          - show logging
+
                  
       register: show
 
@@ -33,5 +25,5 @@
 
     - name: show_backup
       local_action:
-        copy content="\n\nshow run\n\n{{ show.stdout[1] }}\n\nshow version\n\n{{ show.stdout[2] }}\n\nshow processes cpu\n\n{{ show.stdout[3] }}\n\nshow processes memory\n\n{{ show.stdout[4] }}\n\nshow env all\n\n{{ show.stdout[5] }}\n\nshow interfaces status err-disabled\n\n{{ show.stdout[6] }}\n\nshow interfaces | in up|CRC\n\n{{ show.stdout[7] }}\n\nshow interfaces status\n\n{{ show.stdout[8] }}\n\nshow inventory\n\n{{ show.stdout[9] }}\n\nshow logging\n\n{{ show.stdout[10] }}\n\n"
+        copy content="\n\nshow run\n\n{{ show.stdout[1] }}\n\nshow version\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt
