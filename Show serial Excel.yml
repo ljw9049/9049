@@ -16,6 +16,13 @@
       ignore_errors: True
       register: Serial
 
+   - name: Make Result Directory
+     local_action:
+       module: file
+       path: "/var/lib/awx/projects/_11__ljw90/Result/{{ lookup('pipe', 'date +%Y%m%d') }}"
+       state: directory
+       mode: u=rwX,g=rX,o=rX
+
     - name: Result summary
       local_action:
         copy content="{{ Hostname.stdout }}|{{ Serial.stdout }}"
