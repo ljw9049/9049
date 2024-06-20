@@ -10,8 +10,8 @@
       ios_command:
         commands:
           - terminal length 0
+          - show run
           - show version
-
                  
       register: show
 
@@ -24,5 +24,6 @@
 
     - name: show_backup
       local_action:
-        copy content="\n\nshow version\n\n{{ show.stdout[1] }}\n\n"
+        copy content="\n\nshow run\n\n{{ show.stdout[1] }}\n\nshow version\n\n{{ show.stdout[2] }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}.txt
+
