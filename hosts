@@ -269,6 +269,7 @@ AKC_JJ_SW"#"11
 AKC_JJ_SW"#"12 
 AKC_JJ_SW"#"13
 AKC_PT_SW"#"11
+AKS_Cheongyang_Main"#"2
 
 [juniper]
 #AKU_new_building_sw ansible_host=10.100.18.252
