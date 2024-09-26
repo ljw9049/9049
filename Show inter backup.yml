@@ -1,0 +1,27 @@
+---
+- name: cisco
+  hosts: all
+  gather_facts: no
+  connection: localhost
+
+
+  tasks:
+    - name: show_output
+      ios_command:
+        commands:
+          - terminal length 0
+          - show inventory
+                 
+      register: show
+
+    - name: Make Result Directory
+      local_action:
+        module: file
+        path: "/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}"
+        state: directory
+        mode: u=rwX,g=rX,o=rX
+
+    - name: show_backup
+      local_action:
+        copy content="\n\nshow inventory\n\n{{ show.stdout[1] }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}
