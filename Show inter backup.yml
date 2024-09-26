@@ -10,6 +10,7 @@
       ios_command:
         commands:
           - terminal length 0
+          - show run
           - show interfaces status
                  
       register: show
