@@ -12,7 +12,7 @@
 
     - name: show_backup2
       local_action:
-        copy content="\n\nshow inventory\n\n{{ result.stdout }}\n\n"
+        copy content="\n\nshow inter status\n\n{{ result.stdout }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify3
@@ -21,7 +21,7 @@
 
     - name: show_backup3
       local_action:
-        copy content="\n\nshow inventory\n\n{{ result2.stdout }}\n\n"
+        copy content="\n\nshow inter status\n\n{{ result2.stdout }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
@@ -30,7 +30,7 @@
 
     - name: show_backup3
       local_action:
-        copy content="\n\nshow inventory\n\n{{ result4.stdout }}\n\n"
+        copy content="\n\nshow inter status\n\n{{ result4.stdout }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
@@ -39,7 +39,7 @@
 
     - name: show_backup3
       local_action:
-        copy content="\n\nshow inventory\n\n{{ result5.stdout }}\n\n"
+        copy content="\n\nshow inter status\n\n{{ result5.stdout }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
@@ -48,7 +48,7 @@
 
     - name: show_backup3
       local_action:
-        copy content="\n\nshow inventory\n\n{{ result6.stdout }}\n\n"
+        copy content="\n\nshow inter status\n\n{{ result6.stdout }}\n\n"
         dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}_2
 
     - name: modify4
@@ -73,4 +73,4 @@
         dest: "/var/lib/awx/projects/_11__ljw90/Result/result.csv"
 
     - name: show_Result
-      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel_Show_inv.py
+      shell: python3 /var/lib/awx/projects/_11__ljw90/To_excel_Show_int.py
