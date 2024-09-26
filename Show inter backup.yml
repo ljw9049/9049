@@ -10,7 +10,7 @@
       ios_command:
         commands:
           - terminal length 0
-          - show inventory
+          - show interfaces status
                  
       register: show
 
@@ -23,5 +23,5 @@
 
     - name: show_backup
       local_action:
-        copy content="\n\nshow inventory\n\n{{ show.stdout[1] }}\n\n"
-        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ inventory_hostname }}
+        copy content="\n\nshow interfaces status\n\n{{ show.stdout[1] }}\n\n"
+        dest=/var/lib/awx/projects/_11__ljw90/backup/{{ lookup('pipe', 'date +%Y%m%d') }}/{{ interfaces_hostname }}
