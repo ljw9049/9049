@@ -113,7 +113,21 @@
 #AKC_JJ_SW"#"12 ansible_host=10.100.216.12
 #AKC_JJ_SW"#"13 ansible_host=10.100.216.13
 #AKC_PT_SW"#"11 ansible_host=10.200.17.11
-AKS_Cheongyang_Main"#"2 ansible_host=192.168.66.22
+#AKS_Cheongyang_Main"#"2 ansible_host=192.168.66.22
+AKS_Cheongyang_Official ansible_host=192.168.66.31
+AKS_Cheongyang_Denti"#"1 ansible_host=192.168.66.36
+AKS_Cheongyang_Product ansible_host=192.168.66.27
+AKS_Cheongyang_Distri ansible_host=192.168.66.23
+AK_ChungYang_C2950 ansible_host=192.168.66.7
+AKS_Cheongyang_Shampoo ansible_host=192.168.66.37
+AKS_Cheongyang_Liq"#"1 ansible_host=192.168.66.24
+AKS_Cheongyang_Cosmetic"#"2 ansible_host=192.168.66.251
+AKS_Cheongyang_Cosmetic"#"3 ansible_host=192.168.66.246
+AKS_Cheongyang_Cosmetic ansible_host=192.168.66.29
+AKS_Cheongyang_Cos_QC ansible_host=192.168.66.30
+
+
+
 
 [ios:vars]
 #ansible_network_os=ios
@@ -270,6 +284,18 @@ AKC_JJ_SW"#"12
 AKC_JJ_SW"#"13
 AKC_PT_SW"#"11
 AKS_Cheongyang_Main"#"2
+AKS_Cheongyang_Official 
+AKS_Cheongyang_Denti"#"1
+AKS_Cheongyang_Product
+AKS_Cheongyang_Distri
+AK_ChungYang_C2950
+AKS_Cheongyang_Shampoo
+AKS_Cheongyang_Liq"#"1
+AKS_Cheongyang_Cosmetic"#"2
+AKS_Cheongyang_Cosmetic"#"3
+AKS_Cheongyang_Cosmetic
+AKS_Cheongyang_Cos_QC
+
 
 [juniper]
 #AKU_new_building_sw ansible_host=10.100.18.252
