@@ -311,8 +311,8 @@ AKS_Cheongyang_Cos_QC
 #AKCT_POHANG_VPN ansible_host=10.150.12.1
 AKS_KIDC_A ansible_host=172.26.2.1
 AKC_FW_1 ansible_host=172.16.50.111
-#AKHD_SRX1 ansible_host=10.90.1.1
-#Groupware_FW_1 ansible_host=10.250.20.193
+AKHD_SRX1 ansible_host=10.90.1.1
+Groupware_FW_1 ansible_host=10.250.20.193
 #SRX_AK_MAPO_FW ansible_host=10.1.10.1
 
 [juniper:vars]
