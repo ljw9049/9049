@@ -299,21 +299,21 @@ AKS_Cheongyang_Cos_QC
 
 [juniper]
 #AKU_new_building_sw ansible_host=10.100.18.252
-AKC_ULSAN_VPN ansible_host=10.100.12.254
-AKC_BUSAN_VPN ansible_host=10.100.13.254
+#AKC_ULSAN_VPN ansible_host=10.100.12.254
+#AKC_BUSAN_VPN ansible_host=10.100.13.254
 #AKC_CHUNGYANG_FAC_VPN ansible_host=10.200.15.1
 #AKC_DEAJEON_TECH_VPN ansible_host=10.200.12.1
-AKC_JEONJU_VPN ansible_host=10.100.16.254
+#AKC_JEONJU_VPN ansible_host=10.100.16.254
 #AKCT_DAEGU_VPN ansible_host=10.150.14.1
 #AKCT_DAEJEON ansible_host=192.168.123.1
 #AKCT_SIHWA_VPN ansible_host=10.150.13.1
 #AKCT_CHEONGYANG_VPN ansible_host=10.150.16.1
 #AKCT_POHANG_VPN ansible_host=10.150.12.1
-#AKS_KIDC_A ansible_host=172.26.2.1
-#AKC_FW_1 ansible_host=172.16.50.111
+AKS_KIDC_A ansible_host=172.26.2.1
+AKC_FW_1 ansible_host=172.16.50.111
 #AKHD_SRX1 ansible_host=10.90.1.1
 #Groupware_FW_1 ansible_host=10.250.20.193
-SRX_AK_MAPO_FW ansible_host=10.1.10.1
+#SRX_AK_MAPO_FW ansible_host=10.1.10.1
 
 [juniper:vars]
 ansible_network_os=junos
